@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 00:44:13 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 00:47:11 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -218,7 +218,6 @@ done
 
 checkforbidden() {
 	coplienform
-	guardcheck
 	forbidden=0
 	for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 		output=$(cat $fichier | grep -w "printf" | wc -l)
@@ -255,7 +254,6 @@ checkforbidden() {
 }
 
 guardcheck() {
-	for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 		output=$(cat $fichier | grep -w "endif" | wc -l)
 		output1=$(cat $fichier | grep -w "ifndef" | wc -l)
 		output2=$(cat $fichier | grep -w "pragma" | grep -w "once" | wc -l)
@@ -271,7 +269,6 @@ guardcheck() {
 		else
 			printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
 		fi
-	done
 }
 
 coplienform() {
@@ -312,7 +309,7 @@ coplienform() {
 			else
 				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 			fi
-
+			guardcheck
 		done
 	else
 		printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
