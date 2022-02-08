@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 00:41:57 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 00:44:13 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -284,7 +284,7 @@ coplienform() {
 				coplien=0
 				class=$(echo $fichier | rev | cut -c 5- | rev)
 				class=$(echo $class | cut -c 3-)
-				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${blanc} ($fichier) :\n"
+				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${neutre} ($fichier)${blanc} :\n"
 				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
 				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
 				output2=$(cat $fichier | grep "~$class(" | wc -l)
