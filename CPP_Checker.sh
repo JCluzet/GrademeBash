@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 00:30:55 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 00:32:14 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -259,7 +259,7 @@ coplienform() {
 	over=0
 	if [ $cpp -ge 2 ]; then
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
-		if [$fichier != "./ex00/easyfind.hpp" ]; then
+		if [ $fichier != "./easyfind.hpp" ]; then
 			coplien=0
 			class=$(echo $fichier | rev | cut -c 5- | rev)
 			class=$(echo $class | cut -c 3-)
