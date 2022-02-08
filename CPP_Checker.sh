@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 00:32:14 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 00:40:49 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -217,6 +217,7 @@ for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./$
 done
 
 checkforbidden() {
+	guardcheck
 	coplienform
 	forbidden=0
 	for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
@@ -253,45 +254,65 @@ checkforbidden() {
 	done
 }
 
+guardcheck() {
+	for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
+		output=$(cat $fichier | grep -w "endif" | wc -l)
+		output1=$(cat $fichier | grep -w "ifndef" | wc -l)
+		output2=$(cat $fichier | grep -w "pragma" | grep -w "once" | wc -l)
+		# if (output is 0 or output1 is 0) and output2 is 0 then error
+		if [ $output -eq 0 ] || [ $output1 -eq 0 ]
+		then
+			if [ $output2 -eq 0 ]
+			then
+				printf "\n${blanc}     🛂 GUARD CHECK : ${rougefonce}ERROR${blanc} ${vertclair}$fichier${blanc} missing ifndef\n"
+			else
+				printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
+			fi
+		else
+			printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
+		fi
+	done
+}
+
 coplienform() {
 	coplien=0
 	output7=0
 	over=0
 	if [ $cpp -ge 2 ]; then
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
-		if [ $fichier != "./easyfind.hpp" ]; then
-			coplien=0
-			class=$(echo $fichier | rev | cut -c 5- | rev)
-			class=$(echo $class | cut -c 3-)
-			printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${blanc} ($fichier) :\n"
-			output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
-			output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
-			output2=$(cat $fichier | grep "~$class(" | wc -l)
-			output3=$(cat $fichier | grep "$class" | grep -w "operator=" | wc -l)
-			output4=$(cat $fichier | grep "operator<<" | wc -l)
-			#if $output eq 0 and #output7 eq 0
-			if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
-				printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class() missing\n"
-				((coplien++))
+			if [ $fichier != "./easyfind.hpp" ]; then
+				coplien=0
+				class=$(echo $fichier | rev | cut -c 5- | rev)
+				class=$(echo $class | cut -c 3-)
+				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${blanc} ($fichier) :\n"
+				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
+				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
+				output2=$(cat $fichier | grep "~$class(" | wc -l)
+				output3=$(cat $fichier | grep "$class" | grep -w "operator=" | wc -l)
+				output4=$(cat $fichier | grep "operator<<" | wc -l)
+				#if $output eq 0 and #output7 eq 0
+				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class() missing\n"
+					((coplien++))
+				fi
+				if [ $output2 -eq 0 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} ~$class() missing\n"
+					((coplien++))
+				fi
+				if [ $output3 -eq 0 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class& operator= missing\n"
+					((coplien++))
+				fi
+				if [ $output4 -eq 0 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${orange}WARNING${blanc} operator<< missing\n"
+				fi
+				if [ $coplien -eq 0 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
+				fi
+			else
+				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 			fi
-			if [ $output2 -eq 0 ]; then
-				printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} ~$class() missing\n"
-				((coplien++))
-			fi
-			if [ $output3 -eq 0 ]; then
-				printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class& operator= missing\n"
-				((coplien++))
-			fi
-			if [ $output4 -eq 0 ]; then
-				printf "\n${blanc}     🛂 COPLIEN FORM : ${orange}WARNING${blanc} operator<< missing\n"
-			fi
-			if [ $coplien -eq 0 ]; then
-				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
-			fi
-		else
-			printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
-		fi
-		
+
 		done
 	else
 		printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
