@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 00:40:49 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 00:41:57 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -217,8 +217,8 @@ for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./$
 done
 
 checkforbidden() {
-	guardcheck
 	coplienform
+	guardcheck
 	forbidden=0
 	for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 		output=$(cat $fichier | grep -w "printf" | wc -l)
