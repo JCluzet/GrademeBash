@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 01:28:28 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 01:35:56 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -334,12 +334,12 @@ coplienform() {
 			else
 				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 			fi
-			guardcheck
-			virtualcheck
 		done
 	else
 		printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 	fi
+	guardcheck
+	virtualcheck
 }
 
 makecheck() {
