@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 05:29:05 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 05:59:48 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,11 @@ cpp=-1
 header() {
 	clear
 
-	printf "\n${vertclair}       _  _  ____   ____ _               _               ____   ___ ____  ____
-     | || ||___ \ / ___| |__   ___  ___| | _____ _ __  |___ \ / _ \___ \/\___ \\
-     | || |_ __) | |   | '_ \ / _ \/ __| |/ / _ \ '__|   __) | | | |__) | |__) |
-     |__   _/ __/| |___| | | |  __/ (__|   <  __/ |     / __/| |_| / __/|/ __/ |
-        |_||_____|\____|_| |_|\___|\___|_|\_\___|_|    |_____|\___/_____/_____/ \n"
+	printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
+/\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\  
+\ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
+ \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n"
 
 	printf "\n"
 
@@ -264,12 +264,12 @@ guardcheck() {
 		then
 			if [ $output2 -eq 0 ]
 			then
-				printf "\n${blanc}     🛂 GUARD CHECK : ${rougefonce}ERROR${blanc} ${vertclair}$fichier${blanc} missing ifndef\n"
+				printf "\n${blanc}     🛂 GUARD CHECK  : ${rougefonce}ERROR${blanc} ${vertclair}$fichier${blanc} missing ifndef\n"
 			else
-				printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
+				printf "\n${blanc}     🛂 GUARD CHECK  : ${vertclair}PERFECT${blanc}\n"
 			fi
 		else
-			printf "\n${blanc}     🛂 GUARD CHECK  : ${vertclair}PERFECT${blanc}\n"
+			    printf "\n${blanc}     🛂 GUARD CHECK  : ${vertclair}PERFECT${blanc}\n"
 		fi
 }
 
