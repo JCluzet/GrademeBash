@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 06:05:49 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 15:55:12 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -349,7 +349,7 @@ coplienform() {
 			virtualcheck
 		done
 	if [ ! $cpp -ge 2 ]; then
-		printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
+		printf "\n\n\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n"
 	fi
 }
 

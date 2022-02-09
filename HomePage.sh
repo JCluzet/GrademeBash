@@ -18,8 +18,8 @@ else
     exit 1
 fi
 
-# bash -c "$(curl 42.cluzet.fr/check)"
-#exit 0 -->
+ bash -c "$(curl 42.cluzet.fr/check)"
+exit 0
 
 printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
