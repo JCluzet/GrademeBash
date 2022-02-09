@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 00:47:11 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 01:28:28 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -247,7 +247,7 @@ checkforbidden() {
 			((forbidden++))
 		fi
 		if [ $forbidden -eq 0 ]; then
-			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${vertclair}PERFECT${blanc}\n"
+			printf "\n\n${blanc}     🛂 FORBIDDEN FUNCTION : ${vertclair}PERFECT${blanc}\n"
 			((forbidden++))
 		fi
 	done
@@ -268,6 +268,31 @@ guardcheck() {
 			fi
 		else
 			printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
+		fi
+}
+
+
+virtualcheck() {
+
+	n=0
+	i=1
+		output=$(cat $fichier | grep -w "virtual" | wc -l)
+		if [ $output -ne 0 ]
+		then
+		printf "\n${blanc}     📡 Virtual for: ${blanc}"
+		fi
+		# While output > 0
+		while [ $n -ne $output ]
+		do
+			# put in outputfi the output line of output1
+			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed "s/virtual//g" | sed 's/   //g')
+			printf "\n                   ${vertclair}${outputfi}${blanc}"
+			n=$((n+1))
+			i=$((i+1))
+		done
+		if [ $output -ne 0 ]
+		then
+			printf "\n\n"
 		fi
 }
 
@@ -310,6 +335,7 @@ coplienform() {
 				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 			fi
 			guardcheck
+			virtualcheck
 		done
 	else
 		printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
