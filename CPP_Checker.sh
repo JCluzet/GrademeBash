@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 06:01:58 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 06:05:49 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -496,9 +496,8 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}\n\n Use this command to launch tester : ${blanc}bash -c \"\$(curl -L grademe.fr)\"\n\n${neutre}"
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                        Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}                ${blanc}last ex: ${vertclair}ex0$ex${blanc} ${neutre}\n\n Use this command to launch tester : ${blanc}bash -c \"\$(curl -L grademe.fr)\"\n\n${neutre}"
 
-printf "\n ${blanc}Last exercice made : ${vertclair}ex0$ex${blanc}\n"
 printf "\n👋 ${blanc}This script is not an official correction, do not grade ${vertclair}${version}${blanc} on our ${rougefonce}criteria${blanc}.\n"
-printf "Check by ${vertclair}yourself ${blanc}and don't be too ${rougefonce}rigorous${blanc}.\n\n"
+printf "Check by ${vertclair}yourself ${blanc}and don't be too ${rougefonce}rigorous${blanc}.\n"
 exit 0
