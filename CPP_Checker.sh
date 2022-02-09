@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 05:11:32 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 05:29:05 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,7 +152,7 @@ if [ -f "./ex00/Bureaucrat.hpp" ] || [ -f "./ex00/bureaucrat.hpp" ]; then
 	cpp=5
 fi
 # if there is a ex00/whatever.hpp, it's CPP7
-if [ -f "./ex00/whatever.hpp" ]; then
+if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP07 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -198,7 +198,8 @@ if [ $cpp -eq -1 ]; then
 	make fclean
 fi
 if [ $cpp -eq -1 ]; then
-	printf "${rougefonce}No module detected\n"
+header
+	printf "${rougefonce}No module detected\n${blanc}Please check your folder, you need to be in repo folder, not in ex?? folder\n"
 fi
 
 # detect if os is linux or mac
@@ -268,7 +269,7 @@ guardcheck() {
 				printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
 			fi
 		else
-			printf "\n${blanc}     🛂 GUARD CHECK : ${vertclair}PERFECT${blanc}\n"
+			printf "\n${blanc}     🛂 GUARD CHECK  : ${vertclair}PERFECT${blanc}\n"
 		fi
 }
 
@@ -280,14 +281,14 @@ virtualcheck() {
 		output=$(cat $fichier | grep -w "virtual" | wc -l)
 		if [ $output -ne 0 ]
 		then
-		printf "\n${blanc}     📡 Virtual for: ${blanc}"
+		printf "\n${blanc}     📡 Virtual for :${blanc}"
 		fi
 		# While output > 0
 		while [ $n -ne $output ]
 		do
 			# put in outputfi the output line of output1
-			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed "s/virtual//g" | sed 's/^[ \t]*//')
-			printf "\n             ${vertclair}${outputfi}${blanc}"
+			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed "s/virtual//g" | sed 's/^[[:space:]]*//g' )
+			printf "\n                       ${vertclair}${outputfi}${blanc}"
 			n=$((n+1))
 			i=$((i+1))
 		done
@@ -481,8 +482,12 @@ if [ $ex -ne 0 ]; then
 	ex=$((ex - 1))
 fi
 
+if [ $cpp -ne -1 ]; then
 printf "\n\n        ${vertclair}ex0$ex${blanc} is the ${rougefonce}last ${blanc}exercice.\n        Tap to exit\n"
 read -n 1 -s -r "" value
+else
+exit
+fi
 
 # detect what is the last exxx folder
 
