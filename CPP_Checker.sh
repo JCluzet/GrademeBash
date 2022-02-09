@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 05:59:48 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 06:01:58 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -492,11 +492,11 @@ fi
 # detect what is the last exxx folder
 
 clear
-printf "\n${vertclair}       _  _  ____   ____ _               _               ____   ___ ____  ____
-     | || ||___ \ / ___| |__   ___  ___| | _____ _ __  |___ \ / _ \___ \/\___ \\
-     | || |_ __) | |   | '_ \ / _ \/ __| |/ / _ \ '__|   __) | | | |__) | |__) |
-     |__   _/ __/| |___| | | |  __/ (__|   <  __/ |     / __/| |_| / __/|/ __/ |
-        |_||_____|\____|_| |_|\___|\___|_|\_\___|_|    |_____|\___/_____/_____/ \n\n                            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}\n\n Use this command to launch tester : ${blanc}bash -c \"\$(curl -L grademe.fr)\"\n\n${neutre}"
+printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
+/\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
+\ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
+ \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}\n\n Use this command to launch tester : ${blanc}bash -c \"\$(curl -L grademe.fr)\"\n\n${neutre}"
 
 printf "\n ${blanc}Last exercice made : ${vertclair}ex0$ex${blanc}\n"
 printf "\n👋 ${blanc}This script is not an official correction, do not grade ${vertclair}${version}${blanc} on our ${rougefonce}criteria${blanc}.\n"
