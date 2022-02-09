@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    check                                              :+:      :+:    :+:    #
+#    C_Checker.sh                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/07 16:37:07 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 05:04:41 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ bleu='\033[0;34m'
 version="UNKNOWN"
 
 i=6
+cluster=$(echo $SESSION_MANAGER | cut -c 7- | sed "s/.clusters.42paris.fr/                      /g" | cut -c -10 | sed "s/ //g")
 u=0
 goodheader=0
 goodnorme=0
@@ -118,12 +119,12 @@ printf "\n";
 
 if [ $ignorefiles = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]
 	then
-	printf "      Student : ${blanc}${version}      ${vertclair}${PWD##*/} ${blanc}> ${vertclair}${inall} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}$os${blanc} Correction\n"
+	printf "      Student : ${blanc}${version}      ${vertclair}${PWD##*/} ${blanc}> ${vertclair}${inall} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}$os $cluster${blanc} Correction\n"
 fi
 
 if [ $ignorefiles != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]
 	then
-	printf "     Student : ${blanc}${version} ${vertclair}${PWD##*/}${blanc} without ${rougefonce}${ignorefiles} ${blanc}> ${vertclair}${inall} ${blanc}Files${neutre} 🔦    🔧 ${vertclair}$os${blanc} Correction\n"
+	printf "     Student : ${blanc}${version} ${vertclair}${PWD##*/}${blanc} without ${rougefonce}${ignorefiles} ${blanc}> ${vertclair}${inall} ${blanc}Files${neutre} 🔦    🔧 ${vertclair}$os $cluster ${blanc} Correction\n"
 fi
 
 if [ $ignorefiles != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]

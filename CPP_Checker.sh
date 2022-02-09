@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 01:51:38 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 05:03:33 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 i=6
 u=0
 goodheader=0
+cluster=$(echo $SESSION_MANAGER | cut -c 7- | sed "s/.clusters.42paris.fr/                      /g" | cut -c -10 | sed "s/ //g")
 goodnorme=0
 norminettenotfound=0
 goodmakefile=0
@@ -52,11 +53,11 @@ header() {
 	printf "\n"
 
 	if [ $ignorefiles = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]; then
-		printf "      Student : ${blanc}${version}      ${vertclair}CPP0${cpp} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}CPP${blanc} Correction on ${orange}${os}${neutre}\n"
+		printf "      Student : ${blanc}${version}      ${vertclair}CPP0${cpp} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}CPP${blanc} ${orange}${os} ${cluster}${neutre}\n"
 	fi
 
 	if [ $ignorefiles != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]; then
-		printf "      Student : ${blanc}${version} ${vertclair}CPP0${cpp}${blanc} without ${rougefonce}${ignorefiles} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦    🔧 ${vertclair}$os${blanc} Correction\n"
+		printf "      Student : ${blanc}${version} ${vertclair}CPP0${cpp}${blanc} without ${rougefonce}${ignorefiles} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦    🔧 ${vertclair}${os} ${cluster}${blanc} Correction\n"
 	fi
 
 	if [ $ignorefiles != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]; then
