@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 05:05:54 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 05:06:30 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ header() {
 	printf "\n"
 
 	if [ $ignorefiles = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]; then
-		printf "      Student : ${blanc}${version}      ${vertclair}CPP0${cpp} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}CPP Correction on${blanc} ${orange}${os} ${cluster}${neutre}\n"
+		printf "      Student : ${blanc}${version}      ${vertclair}CPP0${cpp} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}CPP${blanc} Correction on ${orange}${os} ${cluster}${neutre}\n"
 	fi
 
 	if [ $ignorefiles != 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]; then
