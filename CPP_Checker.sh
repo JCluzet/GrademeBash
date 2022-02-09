@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 01:35:56 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 01:51:38 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -300,7 +300,6 @@ coplienform() {
 	coplien=0
 	output7=0
 	over=0
-	if [ $cpp -ge 2 ]; then
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 			if [ $fichier != "./easyfind.hpp" ]; then
 				coplien=0
@@ -314,32 +313,42 @@ coplienform() {
 				output4=$(cat $fichier | grep "operator<<" | wc -l)
 				#if $output eq 0 and #output7 eq 0
 				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class() missing\n"
 					((coplien++))
+					fi
 				fi
 				if [ $output2 -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} ~$class() missing\n"
 					((coplien++))
+					fi
 				fi
 				if [ $output3 -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class& operator= missing\n"
 					((coplien++))
+					fi
 				fi
 				if [ $output4 -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${orange}WARNING${blanc} operator<< missing\n"
+					fi
 				fi
 				if [ $coplien -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
+					fi
 				fi
 			else
 				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 			fi
+			guardcheck
+			virtualcheck
 		done
-	else
+	if [ ! $cpp -ge 2 ]; then
 		printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
 	fi
-	guardcheck
-	virtualcheck
 }
 
 makecheck() {
@@ -375,13 +384,27 @@ makecheck() {
 		clang=$(cat Makefile | grep "clang++" | grep -v "std" | wc -l)
 		cplus=$(cat Makefile | grep "c++" | grep -v "std" | wc -l)
 		if [ $gplus -eq 1 ]; then
-			printf "${rougefonce} g++ ${blanc}"
+			printf "${blanc} |${rougefonce} g++ ${blanc}"
 		fi
 		if [ $clang -eq 1 ]; then
 			printf "${blanc} |${vertclair} clang++ ${blanc}"
 		fi
 		if [ $cplus -eq 1 ]; then
 			printf "${blanc} |${vertclair} c++ ${blanc}"
+		fi
+		if [ $cpp == 3 ]; then
+		output=$(cat Makefile | grep "Wno-shadow" | wc -l)
+		output1=$(cat Makefile | grep "Wshadow" | wc -l)
+		if [ $output -eq 1 ]; then
+			printf "${blanc} |${vertclair} -Wno-shadow${blanc}"
+		else
+			printf "${blanc} |${rougefonce} -Wno-shadow ❌${blanc}"
+		fi
+		if [ $output1 -eq 1 ]; then
+			printf "${blanc} |${vertclair} -Wshadow${blanc}"
+		else
+			printf "${blanc} |${rougefonce} -Wshadow ❌${blanc}"
+		fi
 		fi
 	fi
 	printf "\n\n"
