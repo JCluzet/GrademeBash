@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 05:08:34 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/09 05:11:32 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -286,8 +286,8 @@ virtualcheck() {
 		while [ $n -ne $output ]
 		do
 			# put in outputfi the output line of output1
-			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed "s/virtual//g" | sed 's/   //g')
-			printf "\n         ${vertclair}${outputfi}${blanc}"
+			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed "s/virtual//g" | sed 's/^[ \t]*//')
+			printf "\n             ${vertclair}${outputfi}${blanc}"
 			n=$((n+1))
 			i=$((i+1))
 		done
