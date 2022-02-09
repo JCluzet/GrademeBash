@@ -21,6 +21,8 @@ Automatic testing for all 42, C and CPP projects. Makefile relink, Header wrong 
 ### ✔️ GuardGate check
 ### ✔️ Launch auto on VSCode
 
+![Capture d’écran 2022-02-09 à 05 51 34](https://user-images.githubusercontent.com/55356071/153124244-f2348ee5-16d0-4e73-b3f9-757638196996.png)
+
 ## This script automatically launches the test associated with the project. 
 ## Here are all the available tests:
 
