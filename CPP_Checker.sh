@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 15:55:47 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 00:28:53 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -199,7 +199,7 @@ if [ $cpp -eq -1 ]; then
 fi
 if [ $cpp -eq -1 ]; then
 header
-	printf "${rougefonce}No module detected\n${blanc}Please check your folder, you need to be in repo folder, not in ex?? folder\n"
+	printf "${rougefonce}No module detected\n${blanc}Please check your folder, you need to be in repo folder, not in ex?? folder\nIf it's CPP Module, there must be a wrong file name in the exo00.\n"
 fi
 
 # detect if os is linux or mac
@@ -496,7 +496,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                        Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}                ${blanc}last ex: ${vertclair}ex0$ex${blanc} ${neutre}\n\n Use this command to launch tester : ${blanc}bash -c \"\$(curl -L grademe.fr)\"\n\n${neutre}"
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                        Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}                ${blanc}last ex: ${vertclair}ex0$ex${blanc} ${neutre}\n\n          Website : ${blanc}GradeMe.fr\n\n${neutre}"
 
 printf "\n👋 ${blanc}This script is not an official correction, do not grade ${vertclair}${version}${blanc} on our ${rougefonce}criteria${blanc}.\n"
 printf "Check by ${vertclair}yourself ${blanc}and don't be too ${rougefonce}rigorous${blanc}.\n"
