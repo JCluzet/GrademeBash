@@ -30,7 +30,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 
         printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
         printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
-        printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04 \n\n";
+        printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04, 05\n\n";
         printf "\n        ${orange}4  ➤ ${rougefonce} EXIT ${neutre} \n" 
 
         printf "\n           ${blanc}Selection     ➤ "

@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 04:54:11 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 05:12:37 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,23 @@ fi
 # if os is mac, 
 thathscpp=-1
 cpp=-1
+
+# check if  this folder and subfolder (one by one) is chmod +x
+for i in $(ls .); do
+	if [ -d $i ]; then
+		printf "${vertclair}Checking $i...\n"
+		if [ $os == "MAC" ]; then
+		# if file is not readable chmod +x, exit and error
+			if [ ! -r $i ]; then
+				printf "${rougefonce}Error: $i is not readable\n"
+				exit 1
+			fi
+		fi
+	fi
+done
+			
+
+
 
 			for fichier in $(find . -type f -iname "*.c" -o -iname "*.h" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/")
  			do
