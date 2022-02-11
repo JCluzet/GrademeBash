@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 04:10:50 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 04:47:48 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -762,6 +762,33 @@ while true; do
 			cd ..
 			read -n 1 -s -r -p "Press any key to quit"
 			rm -rf cub3D_map_tester
+			break;;
+        [Nn]* )
+			header
+			break;;
+        * ) header
+			printf "\n${rougefonce}                                            ❌ Please enter yes or no (y/n)"
+    esac
+done
+
+elif [[ ${PWD##*/} == 'Philo' || ${PWD##*/} == 'philo' || ${PWD##*/} == 'philosophers' || ${PWD##*/} == 'Philosophers'  || ${PWD##*/} == 'ft_philosophers' ]]          ## Verification Philo
+then
+while true; do
+	printf "\n${blanc} 📚 ${vertclair}Philosophers ${blanc}repo detected, do you want launch ${vertclair} MichelleJiam ♥ GitHub ${blanc}tester ? (y/n)\n\n        "
+    read -p " " yn
+    case $yn in
+        [Yy]* )
+			header
+			git clone https://github.com/MichelleJiam/LazyPhilosophersTester.git
+			make
+			cd LazyPhilosophersTester
+			header
+			printf "\n\n${blanc}Running Philo tester... ${neutre}\n\n     "
+			sleep 2
+			./test.sh ../
+			cd ..
+			read -n 1 -s -r -p "Press any key to quit"
+			rm -rf LazyPhilosophersTester
 			break;;
         [Nn]* )
 			header
