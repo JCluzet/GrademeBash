@@ -73,7 +73,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 # if folder 42_EXAM exist
     if [ -d 42_EXAM ]
     then
-        printf "42_EXAM already download\n\nLaunch and check update... "
+        printf "42_EXAM ${blanc}already download\n\nLaunch and check update... "
         cd 42_EXAM
         sleep 1
         make
