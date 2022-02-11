@@ -64,6 +64,7 @@ then
 fi
 if (( "$choice" == 3))
 then
+clear
 printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
@@ -77,13 +78,13 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         sleep 1
         make
     else
-        printf "           You're going to download ${vertclair}42_EXAM ${blanc}from ${vertclair}JCluzet Github${blanc} in ${vertclair}${PWD}/42_EXAM/${blanc}\n           Click to continue or n to skip."
+        printf "  You're going to download ${vertclair}42_EXAM ${blanc}from ${vertclair}JCluzet Github${blanc} in ${vertclair}${PWD}/42_EXAM/${blanc}\n    Click to continue or n to skip."
         read -rsn1 -p " " value
         if [ "$value" != "n" ]
 then
     sh -c "$(curl 42.cluzet.fr/exam)"
     else
-    printf "\n\n              Please enter the command where you want to install 42_EXAM.\n"
+    printf "\n\nPlease enter the command where you want to install 42_EXAM.\n"
     exit
     fi
     fi
