@@ -163,7 +163,7 @@ then
     printf "FLAGS    := -Wall -Wextra -Werror -std=c++98\n" >> Makefile_temp
 else
     ask "${vertfonce}3. ${neutre}Which compiler do you want to use ? ex : ${vertfonce}gcc${neutre}, ${vertfonce}clang${neutre}" "\nCC"
-    printf "FLAGS    := -Wall -Wextra -Werror" >> Makefile_temp
+    printf "\nFLAGS    := -Wall -Wextra -Werror" >> Makefile_temp
 fi
 
 # header 3
