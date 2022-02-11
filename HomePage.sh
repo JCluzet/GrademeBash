@@ -25,13 +25,13 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}\n\n"
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe ${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
 
 
-        printf "        ${orange}1     ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
-        printf "        ${orange}2     ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
-        printf "        ${orange}3     ➤ ${vertclair} 42_EXAM ${neutre} Exam Rank 02, 03, 04 \n\n";
-        printf "\n        ${orange}4     ➤ ${rougefonce} EXIT ${neutre} \n" 
+        printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
+        printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
+        printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04 \n\n";
+        printf "\n        ${orange}4  ➤ ${rougefonce} EXIT ${neutre} \n" 
 
         printf "\n           ${blanc}Selection     ➤ "
 read -r -p " " choice
@@ -43,12 +43,12 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n                            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}\n\n"
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe ${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
 
 
         printf "        ${orange}1     ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
         printf "        ${orange}2     ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
-        printf "        ${orange}3     ➤ ${vertclair} 42_EXAM ${neutre} Exam Rank 02, 03, 04 \n\n";
+        printf "        ${orange}3     ➤ ${vertclair} 42_EXAM simulator${neutre} Exam Rank 02, 03, 04 \n\n";
         printf "\n        ${orange}4     ➤ ${rougefonce} EXIT ${neutre} \n" 
 
         printf "\n          ${blanc}Select a number from 1 to 4     ➤ "
