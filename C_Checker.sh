@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 02:39:17 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 04:10:50 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,7 +191,7 @@ if [ $gooddock = 0 ]; then
 	printf "\n${rougefonce}         Error ${vertclair}${PWD##*/} ${blanc}does not contain any .c, .cpp or .h files.\n               ${neutre}           >  Check your repertory\n\n"
 	# echo "${rougefonce}Maybe you use sh instead of BASH :${neutre} Please launch this script with bash. ${vertclair} \n\nTry : ${neutre}bash -c \$(\"curl 42.cluzet.fr/check\")\n\n\n"
 	
-	printf "\n\n\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 5 SECONDS\n               "
+	printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 5 SECONDS\n               "
 	for i in {1..32}
 	do
 		printf "|"
@@ -199,27 +199,7 @@ if [ $gooddock = 0 ]; then
 	done
 	bash -c "$(curl 42.cluzet.fr)"
 	exit 0
-fi
 
-
-
-
-
-
-
-
-	
-	
-	
-	printf "\n\n\n${blanc}     🗝   Touch y to launch ${vertclair} 42 EXAM simulator ${blanc} or other to exit\n"
-	read -rsn1 "" value
-	if [[ $value == "y" ]] || [[ $value == "Y" ]]
-	then
-		bash -c "$(curl 42.cluzet.fr/exam)"
-		exit 0
-	else
-		exit 0
-	fi
 else
 
 if [ -e savenorme ]
