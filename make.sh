@@ -213,6 +213,7 @@ fill_srcs () {
 
 printf "\nSRCS        :=      " >> Makefile_temp
 
+
 header 8
 for f in $(find . -name '*.c' -o -name "*.cpp" -prune -o -path \*mlx\* -prune -path \*MiniLibx\* -prune -o -path \*mlx_linux\* -prune)
 do 
@@ -238,12 +239,10 @@ else
 fi
 
 
-check_at_the_end
 
 clear
 # cat ~/.42Make/utils >> Makefile_temp
 
-printf "${neutre}\n\n${vertfonce}✓ ${neutre}Makefile is now ready to be used.\n\n"
 printf ""
 printf "
 ################################################################################
@@ -286,13 +285,24 @@ re:			fclean all
 
 
 
+# if there is a Makefile_old in the same directory, ask if you want to keep it
+header 9
+if [ -f Makefile ]
+then
+    printf "Do you want to keep the old Makefile ? (y/n)\n"
+    read -rsn1 -p "" value
+    if [ "$value" == "y" ]
+    then
+        mv Makefile Makefile_old_$(date +%d-%m-%Y)
+        printf "Youre Makefile is now named Makefile_old_$(date +%d-%m-%Y)\n"
+    else
+        rm Makefile
+    fi
+fi
+check_at_the_end
 
-
-
-mv Makefile Makefile_old > /dev/null 2>&1
-rm Makefile > /dev/null 2>&1
 mv Makefile_temp Makefile
 clear
 printf   "${vertfonce}  |  |  ___ \    \  |         |\n  |  |     ) |  |\/ |   _  |  |  /   _ \\n ___ __|  __/   |   |  (   |    <    __/ \n    _|  _____| _|  _| \__,_| _|\_\ \___|${neutre}\n                  made with ${rougefoncefonce}♥${neutre} by ${vertfonce}jcluzet${neutre}\n\n"
 # printf MAkefile is now ready to be used.
-printf " \nYou can now use find ${vertfonce}Makefile${neutre} in your repo.\n\n"
+printf "${neutre}\n${vertfonce}    ✓ ${neutre}Makefile is now ready to be used.\n\n"
