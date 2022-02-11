@@ -60,7 +60,7 @@ then
 fi
 if (( "$choice" == 2))
 then
-    bash -c "$(curl grademe.fr/make)"
+    bash -c "$(curl 42.cluzet.fr/make)"
 fi
 if (( "$choice" == 3))
 then
