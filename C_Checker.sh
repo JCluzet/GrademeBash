@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 04:47:48 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 04:49:51 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -785,7 +785,7 @@ while true; do
 			header
 			printf "\n\n${blanc}Running Philo tester... ${neutre}\n\n     "
 			sleep 2
-			./test.sh ../
+			./test.sh ../philo
 			cd ..
 			read -n 1 -s -r -p "Press any key to quit"
 			rm -rf LazyPhilosophersTester
