@@ -289,8 +289,10 @@ re:			fclean all
 
 
 
-
-rm Makefile > /dev/null
+mv Makefile Makefile_old > /dev/null 2>&1
+rm Makefile > /dev/null 2>&1
 mv Makefile_temp Makefile
 clear
-printf   "${vertfonce}  |  |  ___ \    \  |         |\n  |  |     ) |  |\/ |   _  |  |  /   _ \\n ___ __|  __/   |   |  (   |    <    __/ \n    _|  _____| _|  _| \__,_| _|\_\ \___|${neutre}\n                  made with ${rougefoncefonce}♥${neutre} by ${vertfonce}jcluzet${neutre}\n\n\nYou can now find your ${vertfonce}Makefile${neutre} in your repo.\n\n"
+printf   "${vertfonce}  |  |  ___ \    \  |         |\n  |  |     ) |  |\/ |   _  |  |  /   _ \\n ___ __|  __/   |   |  (   |    <    __/ \n    _|  _____| _|  _| \__,_| _|\_\ \___|${neutre}\n                  made with ${rougefoncefonce}♥${neutre} by ${vertfonce}jcluzet${neutre}\n\n"
+# printf MAkefile is now ready to be used.
+printf " \nYou can now use find ${vertfonce}Makefile${neutre} in your repo.\n\n"
