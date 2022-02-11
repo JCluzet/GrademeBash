@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 04:49:51 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 04:52:03 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -685,14 +685,18 @@ else
 		printf "\n ${blanc}   🛂 Norme ${rougefonce}FAILED${blanc}\n"
 	fi
 fi
-printf "\n\n\n ${blanc}   🧬 Touch a key to open ${vertclair}${PWD##*/}${blanc} in ${bleu}Visual Studio Code${blanc}"
-read -p " "
+printf "\n\n\n ${blanc}   🧬 Touch a key to open ${vertclair}${PWD##*/}${blanc} in ${bleu}Visual Studio Code${blanc} or 'n' to skip\n"
+read -rsn1 " " value
+if [ "$value" != "n" ]
+then
+
 printf "\n ${blanc}   Opening..."
 # if os is MAC, use open -a Visual\ Studio\ Code.app . else use code .
 if [[ "$os" == "MAC" ]]; then
 	open -a "Visual Studio Code.app" .
 else
 	code .
+fi
 fi
 
 
