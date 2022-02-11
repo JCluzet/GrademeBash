@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 04:12:33 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 04:13:30 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -201,11 +201,11 @@ if [ $cpp -eq -1 ]; then
 header
 	printf "${rougefonce}No CPP module detected\n${blanc}Please check your folder, you need to be in repo folder, not in ex folder\n\nIf not, there must be a wrong file name in the ex00.\n\n"
 
-	printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 5 SECONDS\n               "
+	printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 8 SECONDS\n               "
 	for i in {1..32}
 	do
 		printf "|"
-		sleep 0.1
+		sleep 0.16
 	done
 	bash -c "$(curl 42.cluzet.fr)"
 	exit 0
