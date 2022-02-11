@@ -305,4 +305,4 @@ mv Makefile_temp Makefile
 clear
 printf   "${vertfonce}  |  |  ___ \    \  |         |\n  |  |     ) |  |\/ |   _  |  |  /   _ \\n ___ __|  __/   |   |  (   |    <    __/ \n    _|  _____| _|  _| \__,_| _|\_\ \___|${neutre}\n                  made with ${rougefoncefonce}♥${neutre} by ${vertfonce}jcluzet${neutre}\n\n"
 # printf MAkefile is now ready to be used.
-printf "${neutre}\n${vertfonce}    ✓ ${neutre}Makefile is now ready to be used.\n\n"
+printf "${neutre}\n${vertfonce}    ✓ ${neutre}Makefile is now ready to be used.\n"
