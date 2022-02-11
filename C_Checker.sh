@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/09 05:59:38 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 02:39:17 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ blanc='\033[1;37m'
 neutre='\033[0;m'
 bleu='\033[0;34m'
 version="UNKNOWN"
+student="UNKNOWN"
 
 i=6
 cluster=$(echo $SESSION_MANAGER | cut -c 7- | sed "s/.clusters.42paris.fr/                      /g" | cut -c -10 | sed "s/ //g")
@@ -47,8 +48,10 @@ else
 	os="LINUX"
 fi
 
+
+
 # if os is mac, 
-thathscpp=0
+thathscpp=-1
 cpp=-1
 
 			for fichier in $(find . -type f -iname "*.c" -o -iname "*.h" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/")
@@ -137,7 +140,7 @@ printf "\n"
 }
 
 # if thathscpp different from 0 then it's cpp
-if [ $thatscpp -ne 0 ]; then
+if [ $thatscpp -ne -1 ]; then
 header
 	bash -c "$(curl 42.cluzet.fr/cpp)"
 	exit 0
@@ -163,6 +166,10 @@ fi
 			done
 			sort .42Checker_2021_Header | uniq >> .42Checker_2021_Header_Sort
 			version=$(cat .42Checker_2021_Header | head -n 1)
+			if [ -z "$version" ]
+			then
+				version="UNKNOWN"
+			fi
 			rm .42Checker_2021_Header
 			rm .42Checker_2021_Header_Sort
 
@@ -181,8 +188,38 @@ done
 header
 
 if [ $gooddock = 0 ]; then
-	printf "\n${rougefonce}          Error ${vertclair}${PWD##*/} ${blanc}does not contain any .c, .cpp or .h files.\n               ${neutre}           >  Check your repertory\n\n\n\n"
-	echo "${rougefonce}Maybe you use sh instead of BASH :${neutre} Please launch this script with bash. ${vertclair} \n\nTry : ${neutre}bash -c \$(\"curl 42.cluzet.fr/check\")\n\n\n"
+	printf "\n${rougefonce}         Error ${vertclair}${PWD##*/} ${blanc}does not contain any .c, .cpp or .h files.\n               ${neutre}           >  Check your repertory\n\n"
+	# echo "${rougefonce}Maybe you use sh instead of BASH :${neutre} Please launch this script with bash. ${vertclair} \n\nTry : ${neutre}bash -c \$(\"curl 42.cluzet.fr/check\")\n\n\n"
+	
+	printf "\n\n\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 5 SECONDS\n               "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.1
+	done
+	bash -c "$(curl 42.cluzet.fr)"
+	exit 0
+fi
+
+
+
+
+
+
+
+
+	
+	
+	
+	printf "\n\n\n${blanc}     🗝   Touch y to launch ${vertclair} 42 EXAM simulator ${blanc} or other to exit\n"
+	read -rsn1 "" value
+	if [[ $value == "y" ]] || [[ $value == "Y" ]]
+	then
+		bash -c "$(curl 42.cluzet.fr/exam)"
+		exit 0
+	else
+		exit 0
+	fi
 else
 
 if [ -e savenorme ]

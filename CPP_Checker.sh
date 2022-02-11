@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 00:28:53 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 02:26:29 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -199,7 +199,7 @@ if [ $cpp -eq -1 ]; then
 fi
 if [ $cpp -eq -1 ]; then
 header
-	printf "${rougefonce}No module detected\n${blanc}Please check your folder, you need to be in repo folder, not in ex?? folder\nIf it's CPP Module, there must be a wrong file name in the exo00.\n"
+	printf "${rougefonce}No module detected\n${blanc}Please check your folder, you need to be in repo folder, not in ex?? folder\nIf it's CPP Module, there must be a wrong file name in the exo0.\n"
 fi
 
 # detect if os is linux or mac
@@ -472,7 +472,7 @@ while [ -d "ex0$ex" ]; do
 		ex1=$(($ex + 1))
 		if [ -d "ex0$ex1" ]; then
 			printf "\n ${blanc}   🧬 Touch a key to continue to ${vertclair}ex0$ex1${blanc}\n"
-			read -n 1 -s -r "" value
+			read -rsn1 "" value
 		fi
 	fi
 	ex=$((ex + 1))
@@ -484,7 +484,7 @@ fi
 
 if [ $cpp -ne -1 ]; then
 printf "\n\n        ${vertclair}ex0$ex${blanc} is the ${rougefonce}last ${blanc}exercice.\n        Tap to exit\n"
-read -n 1 -s -r "" value
+read -rsn1 "" value
 else
 exit
 fi
