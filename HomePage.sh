@@ -86,8 +86,16 @@ printf "\n\n"
     git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make
     else
     printf "\n\nPlease enter the command where you want to install 42_EXAM.\n"
-    exit
-    fi
+	printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 8 SECONDS\n               "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.16
+	done
+	bash -c "$(curl 42.cluzet.fr)"
+	exit 0
+    
+        fi
     fi
 fi
 if (( "$choice" == 4))
