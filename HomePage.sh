@@ -82,6 +82,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         read -rsn1 -p " " value
         if [ "$value" != "n" ]
 then
+printf "\n\n"
     git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make
     else
     printf "\n\nPlease enter the command where you want to install 42_EXAM.\n"
