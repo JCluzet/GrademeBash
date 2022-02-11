@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 04:53:13 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 04:54:11 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -686,7 +686,7 @@ else
 	fi
 fi
 printf "\n\n\n ${blanc}   🧬 Touch a key to open ${vertclair}${PWD##*/}${blanc} in ${bleu}Visual Studio Code${blanc} or 'n' to skip\n"
-read -rsn1 "" value
+read -p "" value
 if [ "$value" != "n" ]
 then
 
