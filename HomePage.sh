@@ -33,10 +33,6 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04, 05\n\n";
         printf "\n        ${orange}4  ➤ ${rougefonce} EXIT ${neutre} \n" 
         # if user is in Desktop folder
-        if [[ $PWD == *"/Desktop" ]]
-        then
-            printf "\n\n ${rougefonce}         ! Warning: ${blanc}You're in ~/Desktop folder.\n            42_CHECKER & 42_Make work only in repo folder.\n\n"
-        fi
 
         printf "\n           ${blanc}Selection     ➤ "
 read -r -p " " choice
@@ -61,11 +57,37 @@ read -rsn1 -p " " choice
 done
 if (( "$choice" == 1 ))
 then
-    bash -c "$(curl 42.cluzet.fr/check)"
+        if [[ $PWD == *"/Desktop" ]]
+        then
+            printf "\n\n ${rougefonce}         ! Warning: ${blanc}You're in ~/Desktop folder.\n            42_CHECKER work only in repo folder.\n\n"
+            printf "\n\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 4 SECONDS\n               "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.08
+	done
+	bash -c "$(curl 42.cluzet.fr)"
+	exit 0
+        else
+            bash -c "$(curl 42.cluzet.fr/check)"
+        fi
 fi
 if (( "$choice" == 2))
 then
+        if [[ $PWD == *"/Desktop" ]]
+        then
+            printf "\n\n ${rougefonce}         ! Warning: ${blanc}You're in ~/Desktop folder.\n            42_CHECKER work only in repo folder.\n\n"
+            printf "\n\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 4 SECONDS\n               "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.08
+	done
+	bash -c "$(curl 42.cluzet.fr)"
+	exit 0
+        else
     bash -c "$(curl 42.cluzet.fr/make)"
+    fi
 fi
 if (( "$choice" == 3))
 then
