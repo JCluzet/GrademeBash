@@ -32,6 +32,11 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
         printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04, 05\n\n";
         printf "\n        ${orange}4  ➤ ${rougefonce} EXIT ${neutre} \n" 
+        # if user is in Desktop folder
+        if [[ $PWD == *"/Desktop" ]]
+        then
+            printf "\n\n ${rougefonce}         ! Warning: ${blanc}You're in ~/Desktop folder.\n            42_CHECKER & 42_Make work only in repo folder.\n\n"
+        fi
 
         printf "\n           ${blanc}Selection     ➤ "
 read -r -p " " choice
