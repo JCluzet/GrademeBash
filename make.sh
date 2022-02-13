@@ -10,6 +10,22 @@ neutre='\033[1;37m'
 reset="\033[0m"
 bleu='\033[0;34m'
 
+# if there is no .c or .cpp file in the current directory, exit with error
+c_files=$(find . -name "*.c" | wc -l)
+cpp_files=$(find . -name "*.cpp" | wc -l)
+
+if [ $c_files -eq 0 ] && [ $cpp_files -eq 0 ]
+then
+    printf "${rougefonce}ERROR :${neutre} No .c or .cpp file in the current directory.\n\n42Make can create a makefile for you, but you need to create a .c or .cpp file first.\n"
+    printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 8 SECONDS\n               "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.16
+	done
+	bash -c "$(curl 42.cluzet.fr)"
+fi
+
 yes_or_no () {
     printf "$1"
     while true; do
@@ -149,8 +165,7 @@ header 5
 header 7
 
 # detect if there is more .cpp file than .c file in the subdirectory
-c_files=$(find . -name "*.c" | wc -l)
-cpp_files=$(find . -name "*.cpp" | wc -l)
+
 if [ $c_files -gt $cpp_files ]
 then
     cxx=1
