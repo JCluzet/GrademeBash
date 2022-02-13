@@ -14,8 +14,33 @@ bleu='\033[0;34m'
 c_files=$(find . -name "*.c" | wc -l)
 cpp_files=$(find . -name "*.cpp" | wc -l)
 
+loading_bar () {
+    COUNTER=0
+    printf "${vertfonce}"
+    while ((COUNTER!=$1*2))
+    do
+    printf "▀▀"
+    COUNTER=$((COUNTER+1))
+    done
+    printf "${neutre}"
+    while ((COUNTER!=20))
+    do
+    printf "▀▀"
+    COUNTER=$((COUNTER+1))
+    done
+    printf "\n\n"
+}
+
+
+header () {
+    clear
+    printf   "${neutre}  |  |  ___ \    \  |         |\n  |  |     ) |  |\/ |   _  |  |  /   _ \\n ___ __|  __/   |   |  (   |    <    __/ \n    _|  _____| _|  _| \__,_| _|\_\ \___|${neutre}\n"
+    loading_bar $1
+}
+
 if [ $c_files -eq 0 ] && [ $cpp_files -eq 0 ]
 then
+    clear
     printf "${rougefonce}ERROR :${neutre} No .c or .cpp file in the current directory.\n\n42Make can create a makefile for you, but you need to create a .c or .cpp file first.\n"
     printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 8 SECONDS\n               "
 	for i in {1..32}
@@ -72,23 +97,6 @@ ask2 () {
 
 blank () {
     clear
-}
-
-loading_bar () {
-    COUNTER=0
-    printf "${vertfonce}"
-    while ((COUNTER!=$1*2))
-    do
-    printf "▀▀"
-    COUNTER=$((COUNTER+1))
-    done
-    printf "${neutre}"
-    while ((COUNTER!=20))
-    do
-    printf "▀▀"
-    COUNTER=$((COUNTER+1))
-    done
-    printf "\n\n"
 }
 
 check_at_the_end () {
