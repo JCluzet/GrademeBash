@@ -189,10 +189,10 @@ fi
 # fi
 
 
-
+header 8
 if yes_or_no "${vertfonce}5. ${neutre}Do you want to add more flags than basic -Wall -Werror -Wextra? (y / n)\n\n     ${vertfonce}      ➢ ${neutre}You don't need to add flag for mlx\n\n"
 then
-header 5
+header 8
 printf " " >> Makefile_temp
 ask "Type the flags you want to add : (ex : -readline)"
 else
@@ -229,7 +229,7 @@ fill_srcs () {
 printf "\nSRCS        :=      " >> Makefile_temp
 
 
-header 8
+header 9
 for f in $(find . -name '*.c' -o -name "*.cpp" -prune -o -path \*mlx\* -prune -path \*MiniLibx\* -prune -o -path \*mlx_linux\* -prune)
 do 
 if [[ $f != *"mlx" ]] && [[ $f != *"mlx_linux" ]] && [[ $f != *"MiniLibx" ]];
