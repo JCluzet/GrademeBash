@@ -204,7 +204,7 @@ else
 fi
 printf " " >>Makefile_temp
 read temp
-if [ "$temp" != "" ] && [ "$temp" != "\n" ]; then
+if [ "$temp" != "" ] && [ "$temp" != "\n" ] && [ "$temp" != "n" ]; then
     printf "$temp" >>Makefile_temp
 fi
 printf "\n"
