@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/20 20:59:05 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/20 21:06:17 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -228,7 +228,6 @@ for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./$
 done
 
 checkforbidden() {
-	coplienform
 	forbidden=0
 	for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 		output=$(cat $fichier | grep -w "printf" | wc -l)
@@ -321,6 +320,7 @@ coplienform() {
 				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
 				output2=$(cat $fichier | grep "~$class(" | wc -l)
 				output3=$(cat $fichier | grep "$class" | grep -w "operator=" | wc -l)
+				output9=$(cat $fichier | grep "$class($class" | grep -w "const" | wc -l)
 				output4=$(cat $fichier | grep "operator<<" | wc -l)
 				#if $output eq 0 and #output7 eq 0
 				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
@@ -349,6 +349,11 @@ coplienform() {
 				if [ $coplien -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
+					fi
+				fi
+				if [ $output9 -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class($class const &) missing\n"
 					fi
 				fi
 			else
@@ -464,6 +469,7 @@ while [ -d "ex0$ex" ]; do
 	header
 	cd "ex0$ex"
 	makecheck
+	coplienform
 	checkforbidden
 	cd ..
 	printf "\n\n\n ${blanc}    🧬 Touch a key to open in ${bleu}Visual Studio Code${blanc} or 'n' to skip\n"
