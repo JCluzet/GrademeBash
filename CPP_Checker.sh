@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/20 21:15:21 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/20 21:20:13 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -322,7 +322,7 @@ coplienform() {
 				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
 				output2=$(cat $fichier | grep "~$class(" | wc -l)
 				output3=$(cat $fichier | grep "$class" | grep -w "operator=" | wc -l)
-				output9=$(cat $fichier | grep "$class($class" | grep -w "const" | wc -l)
+				output9=$(cat $fichier | grep "$class(" | grep "&" | wc -l)
 				output4=$(cat $fichier | grep "operator<<" | wc -l)
 				#if $output eq 0 and #output7 eq 0
 				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
