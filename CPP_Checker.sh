@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/20 21:06:17 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/20 21:15:21 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 i=6
 u=0
 goodheader=0
+nocoplien=0
 cluster=$(echo $SESSION_MANAGER | cut -c 7- | sed "s/.clusters.42paris.fr/                      /g" | cut -c -10 | sed "s/ //g")
 goodnorme=0
 norminettenotfound=0
@@ -309,9 +310,10 @@ virtualcheck() {
 coplienform() {
 	coplien=0
 	output7=0
+	out=0
 	over=0
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
-			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ]; then
+			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $nocoplien -ne 1 ]; then
 				coplien=0
 				class=$(echo $fichier | rev | cut -c 5- | rev)
 				class=$(echo $class | cut -c 3-)
@@ -357,13 +359,16 @@ coplienform() {
 					fi
 				fi
 			else
-				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n\n"
+				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n"
 			fi
 			guardcheck
 			virtualcheck
+			out=$((out+1))
 		done
-	if [ ! $cpp -ge 2 ]; then
-		printf "\n\n\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED"
+		
+	if [ ! $cpp -ge 2 ] || [ $out -eq 0 ]; then
+		printf "\n\n\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n"
+		printf "\n${blanc}     🛂 GUARD CHECK  : ${vertclair}NO NEEDED${blanc}\n"
 	fi
 }
 
@@ -468,6 +473,9 @@ ex=0
 while [ -d "ex0$ex" ]; do
 	header
 	cd "ex0$ex"
+	if [ $ex -eq 1 ] && [ $cpp -eq 6 ]; then
+		nocoplien=1
+	fi   
 	makecheck
 	coplienform
 	checkforbidden
