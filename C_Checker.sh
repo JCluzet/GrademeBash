@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 05:12:37 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/20 23:52:50 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,9 @@ printf "\n"
 
 
 }
+
+# need to add ft_container checker
+
 
 # if thathscpp different from 0 then it's cpp
 if [ $thatscpp -ne -1 ]; then
@@ -819,6 +822,33 @@ while true; do
     esac
 done
 
+elif [[ ${PWD##*/} == 'Minishell' || ${PWD##*/} == 'minishell' || ${PWD##*/} == 'ft_minishell' || ${PWD##*/} == 'ft_Minishell'  || ${PWD##*/} == 'minishell' ]]          ## Verification Minishell
+then
+while true; do
+	printf "\n${blanc} 📚 ${vertclair}Minishell ${blanc}repo detected, do you want launch ${vertclair} solaldunckel ♥ GitHub ${blanc}tester ? (y/n)\n\n        "
+    read -p " " yn
+    case $yn in
+        [Yy]* )
+			header
+			git clone https://github.com/solaldunckel/minishell-tester.git
+			make
+			cd minishell-tester
+			header
+			printf "\n\n${blanc}Running Minishell tester... ${neutre}\n\n     "
+			sleep 2
+			bash test.sh
+			cd ..
+			read -n 1 -s -r -p "Press any key to quit"
+			rm -rf minishell-tester
+			break;;
+        [Nn]* )
+			header
+			break;;
+        * ) header
+			printf "\n${rougefonce}                                            ❌ Please enter yes or no (y/n)"
+    esac
+done
+
 ##########################################################################################################################
 
 elif [[ ${PWD##*/} == 'LIBFT' || ${PWD##*/} == 'libft' || ${PWD##*/} == 'libft' || ${PWD##*/} == 'Libft' ]]          ## Verification Libft
@@ -962,7 +992,10 @@ while true; do
 done
 
 else
-	printf "\n${blanc}Can't find a tester for : ${vertclair}${PWD##*/}${blanc} 42 project :(\nTips: the folder need to have the name of the project.\n\nUse : ${vertclair}mv ${PWD##*/} [name_of_project]${blanc}\n\n"
+	clear
+	printf "\n${rougefonce}ERROR : ${blanc}Can't find a tester for : ${vertclair}${PWD##*/}${blanc} 42 project :(\nTips: the folder need to have the name of the project.\n\nUse : ${vertclair}mv ${PWD##*/} [name_of_project]${blanc}\n\n"
+	printf "Here is all available tester : ${vertclair}LIBFT ${blanc}|${vertclair} GET_NEXT_LINE ${blanc}|${vertclair} PUSH_SWAP ${blanc}|${vertclair} SO_LONG ${blanc}|${vertclair} CUB3D ${blanc}|${vertclair} PHILOSOPHERS ${blanc}| ${vertclair}MINISHELL${blanc}\n"
+	exit 0 
 fi
 
 clear
