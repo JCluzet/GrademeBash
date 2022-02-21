@@ -7,8 +7,9 @@ orange='\033[0;33m'
 blanc='\033[1;37m'
 neutre='\033[0;m'
 # create user var container user= + $LOGNAME
-userpost="user=$LOGNAME"
-time="time=$(date +%Y-%m-%d_%H:%M:%S)"
+userpost="user=$LOGNAME" 
+date=$(date +%d-%m-%Y)
+time="time=$date"
 
 
 clear
