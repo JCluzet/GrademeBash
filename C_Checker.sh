@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/20 23:52:50 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/21 18:05:43 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,6 +158,7 @@ printf "\n"
 
 # need to add ft_container checker
 
+# every time this script is run, it will send a message to the server to know how many people are using this script
 
 # if thathscpp different from 0 then it's cpp
 if [ $thatscpp -ne -1 ]; then

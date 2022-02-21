@@ -6,6 +6,11 @@ vertclair='\033[1;32m'
 orange='\033[0;33m'
 blanc='\033[1;37m'
 neutre='\033[0;m'
+# create user var container user= + $LOGNAME
+userpost="user=$LOGNAME"
+time="time=$(date +%Y-%m-%d_%H:%M:%S)"
+
+
 clear
 
 output=$(echo -e "test")
@@ -69,6 +74,7 @@ then
 	bash -c "$(curl 42.cluzet.fr)"
 	exit 0
         else
+            curl -X POST -F $userpost -F 'using=42_CHECKER' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
             bash -c "$(curl 42.cluzet.fr/check)"
         fi
 fi
