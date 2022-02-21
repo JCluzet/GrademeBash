@@ -75,7 +75,7 @@ then
 	bash -c "$(curl 42.cluzet.fr)"
 	exit 0
         else
-            curl -X POST -F $userpost -F 'using=42_CHECKER' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
+            curl -X POST -F $userpost -F 'using=42_CHECKER' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1 # send data containing user and what he use to server
             bash -c "$(curl 42.cluzet.fr/check)"
         fi
 fi
@@ -93,6 +93,7 @@ then
 	bash -c "$(curl 42.cluzet.fr)"
 	exit 0
         else
+        curl -X POST -F $userpost -F 'using=42_MAKE' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
     bash -c "$(curl 42.cluzet.fr/make)"
     fi
 fi
@@ -110,6 +111,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         printf "42_EXAM ${blanc}already download\n\nLaunch and check update... "
         cd 42_EXAM
         sleep 1
+        curl -X POST -F $userpost -F 'using=42_EXAM alreadydown' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
         make
     else
         printf "  ${blanc}You're going to download ${vertclair}42_EXAM ${blanc}from ${vertclair}JCluzet Github${blanc} in ${vertclair}${PWD}/42_EXAM/${blanc}\n\n    Click to continue or n to skip."
@@ -117,6 +119,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         if [ "$value" != "n" ]
 then
 printf "\n\n"
+curl -X POST -F $userpost -F 'using=42_EXAM download' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
     git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make
     else
     printf "\n\n\n"
