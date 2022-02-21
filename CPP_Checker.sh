@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/21 21:44:31 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/21 23:03:42 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -361,7 +361,8 @@ coplienform() {
 					fi
 					else
 						fail="fail=$(cat $fichier)"
-						curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" http://user.grademe.fr/indexerror.php > /dev/null 2>&1
+						clust="cluster=cluster_$cluster"
+						curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" -F "$clust" http://user.grademe.fr/indexerror.php > /dev/null 2>&1
 				fi
 				if [ $output9 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
