@@ -8,7 +8,7 @@ blanc='\033[1;37m'
 neutre='\033[0;m'
 # create user var container user= + $LOGNAME
 userpost="user=$LOGNAME" 
-date=$(date +%d-%m-%Y)
+date=$(date '+%F_%H:%M:%S')
 time="time=$date"
 
 
