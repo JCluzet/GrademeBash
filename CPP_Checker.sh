@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/21 21:15:48 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/21 21:44:31 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -320,7 +320,7 @@ coplienform() {
 	over=0
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $nocoplien -ne 1 ]; then
-				usingpost="using=[FILES=${fichier}][CPP=$cpp][EX=0$ex][OS=$os][COPLIENFORM] : $(cat $fichier)"
+				usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
 				coplien=0
 				class=$(echo $fichier | rev | cut -c 5- | rev)
 				class=$(echo $class | cut -c 3-)
@@ -358,9 +358,10 @@ coplienform() {
 				if [ $coplien -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
-					else
-						curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/indexerror.php > /dev/null 2>&1 # send file to server
 					fi
+					else
+						fail="fail=$(cat $fichier)"
+						curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" http://user.grademe.fr/indexerror.php > /dev/null 2>&1
 				fi
 				if [ $output9 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
