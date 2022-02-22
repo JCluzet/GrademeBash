@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/21 23:05:46 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/22 02:27:10 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -302,8 +302,8 @@ virtualcheck() {
 		while [ $n -ne $output ]
 		do
 			# put in outputfi the output line of output1
-			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed "s/virtual//g" | sed 's/^[[:space:]]*//g' )
-			printf "\n                       ${vertclair}${outputfi}${blanc}"
+			outputfi=$(cat $fichier | grep -w "virtual" | sed "${i}q;d" | sed 's/^[[:space:]]*//g' )
+			printf "\n                       ${blanc}${outputfi}${blanc}"
 			n=$((n+1))
 			i=$((i+1))
 		done
@@ -319,11 +319,12 @@ coplienform() {
 	out=0
 	over=0
 		for fichier in $(find . -type f -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
-			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $nocoplien -ne 1 ]; then
+			class=$(echo $fichier | rev | cut -c 5- | rev)
+			class=$(echo $class | cut -c 3-)
+			output=$(cat $fichier | grep -w "class" | wc -l)
+			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $nocoplien -ne 1 ] && [ $output -ne 0 ]; then
 				usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
 				coplien=0
-				class=$(echo $fichier | rev | cut -c 5- | rev)
-				class=$(echo $class | cut -c 3-)
 				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${neutre} ($fichier)${blanc} :\n"
 				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
 				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
@@ -389,25 +390,25 @@ makecheck() {
 		flag=$(cat Makefile | grep Wall)
 		printf "\n${blanc}     📜 Makefile flag :${vertclair} "
 		wall=$(cat Makefile | grep "Wall" | wc -l)
-		if [ $wall -eq 1 ]; then
+		if [ $wall -ne 0 ]; then
 			printf "${vertclair}Wall${vertclair}${blanc}"
 		else
 			printf "${blanc}${rougefonce} Wall ${vertclair}❌${blanc}"
 		fi
 		wextra=$(cat Makefile | grep "Wextra" | wc -l)
-		if [ $wextra -eq 1 ]; then
+		if [ $wextra -ne 0 ]; then
 			printf " ${blanc}|${vertclair} Wextra${blanc}"
 		else
 			printf " ${blanc}|${rougefonce} Wextra ❌${blanc}"
 		fi
 		werror=$(cat Makefile | grep "Werror" | wc -l)
-		if [ $werror -eq 1 ]; then
+		if [ $werror -ne 0 ]; then
 			printf "${blanc} | ${vertclair}Werror${blanc}"
 		else
 			printf " ${blanc}|${rougefonce} Werror ❌${blanc}"
 		fi
 		std=$(cat Makefile | grep "std=c++98" | wc -l)
-		if [ $std -eq 1 ]; then
+		if [ $std -ne 0 ]; then
 			printf " ${blanc}| ${vertclair}std=c++98${blanc}"
 		else
 			printf " ${blanc}|${rougefonce} std=c++98 ❌"
@@ -530,7 +531,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n ${blanc}GradeMe.fr        Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}                ${blanc}last ex: ${vertclair}ex0$ex${blanc} ${neutre}\n\n${neutre}"
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n ${blanc} GradeMe.fr            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}                ${blanc}last ex: ${vertclair}ex0$ex${blanc} ${neutre}\n\n${neutre}"
 
 printf "\n👋 ${blanc}This script is not an official correction, do not grade ${vertclair}${version}${blanc} on our ${rougefonce}criteria${blanc}.\n"
 printf "Check by ${vertclair}yourself ${blanc}and don't be too ${rougefonce}rigorous${blanc}.\n"
