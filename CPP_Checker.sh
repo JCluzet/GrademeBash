@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/22 02:27:10 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/22 02:36:47 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -233,41 +233,41 @@ done
 
 checkforbidden() {
 	forbidden=0
+	printf "\n"
 	for fichier in $(find . -type f -iname "*.cpp" -o -iname "*.hpp" | grep -v "^./${ignorefiles}/" | grep -v "^./${ignorefilesdeux}/"); do
 		usingpost="using=[FILES=${fichier}][CPP=$cpp][EX=0$ex][OS=$os][CHECKFORBIDDEN] : $(cat $fichier)" # send files to server 
 		output=$(cat $fichier | grep -w "printf" | wc -l)
 		# if diffeernt than 0
 		if [ $output -ne 0 ]; then
 			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${rougefonce}ERROR${blanc} printf using in ${vertclair}$fichier\n"
-			((forbidden++))
+			forbidden=$((forbidden+1))
 		fi
 		class=$(cat $fichier | grep -w "alloc" | wc -l)
 		if [ $class -ne 0 ]; then
 			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${rougefonce}ERROR${blanc} alloc using in ${vertclair}$fichier\n"
-			((forbidden++))
+			forbidden=$((forbidden+1))
 		fi
 		class=$(cat $fichier | grep -w "free" | wc -l)
 		if [ $class -ne 0 ]; then
 			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${rougefonce}ERROR${blanc} free using in ${vertclair}$fichier\n"
-			((forbidden++))
+			forbidden=$((forbidden+1))
 		fi
 		class=$(cat $fichier | grep -w "using" | grep -w "namespace" | wc -l)
 		if [ $class -ne 0 ]; then
 			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${rougefonce}ERROR${blanc} ${rougefonce}using namespace${blanc} detected in ${vertclair}$fichier\n"
-			((forbidden++))
+			forbidden=$((forbidden+1))
 		fi
 		class=$(cat $fichier | grep -w "friend" | wc -l)
 		if [ $class -ne 0 ]; then
 			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${rougefonce}ERROR${blanc} ${rougefonce}friend${blanc} detected in ${vertclair}$fichier\n"
-			((forbidden++))
+			forbidden=$((forbidden+1))
 		fi
+	done
 		if [ $forbidden -eq 0 ]; then
-			printf "\n\n${blanc}     🛂 FORBIDDEN FUNCTION : ${vertclair}PERFECT${blanc}\n"
-			((forbidden++))
+			printf "\n${blanc}     🛂 FORBIDDEN FUNCTION : ${vertclair}PERFECT${blanc}\n"
 		else
 			curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/indexerror.php > /dev/null 2>&1 # send file to server
 		fi
-	done
 }
 
 guardcheck() {
