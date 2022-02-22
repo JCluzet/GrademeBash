@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/22 02:36:47 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/22 02:39:02 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -492,11 +492,11 @@ while [ -d "ex0$ex" ]; do
 	coplienform
 	checkforbidden
 	cd ..
-	printf "\n\n\n ${blanc}    🧬 Touch a key to open in ${bleu}Visual Studio Code${blanc} or 'n' to skip\n"
+	printf "\n\n\n ${blanc}    🧬 Touch 'n' to open in ${bleu}Visual Studio Code${blanc}, another key to skip\n"
 	read -rsn1 -p " " value
 	# if value is not n
 
-	if [ "$value" != "n" ]; then
+	if [ "$value" == "n" ]; then
 		printf "\n ${blanc}   Opening...\n"
 
 		if [[ "$os" == "MAC" ]]; then
