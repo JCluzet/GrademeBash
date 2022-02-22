@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/22 02:39:02 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/22 02:39:59 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -534,5 +534,5 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n ${blanc} GradeMe.fr            Made with ${rougefonce}♥ ${vertclair}by ${orange}jcluzet${neutre}                ${blanc}last ex: ${vertclair}ex0$ex${blanc} ${neutre}\n\n${neutre}"
 
 printf "\n👋 ${blanc}This script is not an official correction, do not grade ${vertclair}${version}${blanc} on our ${rougefonce}criteria${blanc}.\n"
-printf "Check by ${vertclair}yourself ${blanc}and don't be too ${rougefonce}rigorous${blanc}.\n"
+printf "Check by ${vertclair}yourself ${blanc}and don't be too ${rougefonce}rigorous${blanc}.\n\n"
 exit 0
