@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/22 02:42:28 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/22 02:57:32 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -296,7 +296,7 @@ virtualcheck() {
 		output=$(cat $fichier | grep -w "virtual" | wc -l)
 		if [ $output -ne 0 ]
 		then
-		printf "\n${blanc}     📡 Virtual for :${blanc}"
+		printf "\n${blanc}     📡 Virtual for  :${blanc}"
 		fi
 		# While output > 0
 		while [ $n -ne $output ]
@@ -329,26 +329,33 @@ coplienform() {
 				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
 				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
 				output2=$(cat $fichier | grep "~$class(" | wc -l)
-				output3=$(cat $fichier | grep "$class" | grep -w "operator=" | wc -l)
+				output3=$(cat $fichier | grep "$class" | grep "operator" | grep '=' | wc -l)
 				output9=$(cat $fichier | grep "$class(" | grep "&" | wc -l)
+				output8=$(cat $fichier | grep "$class (" | grep "&" | wc -l)
 				output4=$(cat $fichier | grep "operator<<" | wc -l)
 				#if $output eq 0 and #output7 eq 0
 				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class() missing\n"
-					((coplien++))
+					coplien=$((coplien+1))
 					fi
 				fi
 				if [ $output2 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} ~$class() missing\n"
-					((coplien++))
+					coplien=$((coplien+1))
 					fi
 				fi
 				if [ $output3 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class& operator= missing\n"
-					((coplien++))
+					coplien=$((coplien+1))
+					fi
+				fi
+				if [ $output9 -eq 0 ] && [ $output8 -eq 0 ]; then
+					if [ $cpp -ge 2 ]; then
+					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class($class const &) missing\n"
+					coplien=$((coplien+1))
 					fi
 				fi
 				if [ $output4 -eq 0 ]; then
@@ -364,11 +371,6 @@ coplienform() {
 						fail="fail=$(cat $fichier)"
 						clust="cluster=$cluster"
 						curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" -F "$clust" http://user.grademe.fr/indexerror.php > /dev/null 2>&1
-				fi
-				if [ $output9 -eq 0 ]; then
-					if [ $cpp -ge 2 ]; then
-					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class($class const &) missing\n"
-					fi
 				fi
 			else
 				printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}NO NEEDED\n"
