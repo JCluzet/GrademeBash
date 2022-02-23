@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/23 18:29:33 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/23 18:31:04 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -323,10 +323,10 @@ coplienform() {
 			class=$(echo $fichier | rev | cut -c 5- | rev)
 			class=$(echo $class | cut -c 3-)
 			output=$(cat $fichier | grep -w "class" | wc -l)
-			usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
+				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${neutre} ($fichier)${blanc} :\n"
 			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $output -ne 0 ] && [ $nocoplien -ne 1 ]; then
 				coplien=0
-				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${neutre} ($fichier)${blanc} :\n"
+			usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
 				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
 				output7=$(cat $fichier | grep "$class()" | grep -v "~" | wc -l)
 				output2=$(cat $fichier | grep "~$class(" | wc -l)
@@ -488,9 +488,10 @@ ex=0
 while [ -d "ex0$ex" ]; do
 	header
 	cd "ex0$ex"
-	if [ $ex -eq 1 ] && [ $cpp -eq 6 ]; then
-		nocoplien=1
-	fi   
+	# if [ $ex -eq 1 ] && [ $cpp -eq 6 ]; then
+	# 	nocoplien=1
+	# fi
+	
 	makecheck
 	coplienform
 	checkforbidden
