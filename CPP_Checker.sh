@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/23 18:28:01 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/23 18:28:40 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -334,8 +334,7 @@ coplienform() {
 				output9=$(cat $fichier | grep "$class(" | grep "&" | wc -l)
 				output8=$(cat $fichier | grep "$class (" | grep "&" | wc -l)
 				output4=$(cat $fichier | grep "operator<<" | wc -l)
-				#if $output eq 0 and #output7 eq 0
-				if [ $nocoplien -ne 1 ]; then
+				#if $output eq 0 and #output7 eq
 				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class() missing\n"
