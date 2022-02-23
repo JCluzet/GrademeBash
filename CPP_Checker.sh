@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/23 18:25:30 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/23 18:28:01 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -323,8 +323,8 @@ coplienform() {
 			class=$(echo $fichier | rev | cut -c 5- | rev)
 			class=$(echo $class | cut -c 3-)
 			output=$(cat $fichier | grep -w "class" | wc -l)
-			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $nocoplien -ne 1 ] && [ $output -ne 0 ]; then
-				usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
+			usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
+			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $output -ne 0 ]; then
 				coplien=0
 				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${neutre} ($fichier)${blanc} :\n"
 				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
@@ -335,6 +335,7 @@ coplienform() {
 				output8=$(cat $fichier | grep "$class (" | grep "&" | wc -l)
 				output4=$(cat $fichier | grep "operator<<" | wc -l)
 				#if $output eq 0 and #output7 eq 0
+				if [ $nocoplien -ne 1 ]; then
 				if [ $output -eq 0 ] && [ $output7 -eq 0 ]; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${rougefonce}ERROR${blanc} $class() missing\n"
@@ -364,7 +365,7 @@ coplienform() {
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${orange}WARNING${blanc} operator<< missing\n"
 					fi
 				fi
-				if [ $coplien -eq 0 ]; then
+				if [ $coplien -eq 0 ] ; then
 					if [ $cpp -ge 2 ]; then
 					printf "\n${blanc}     🛂 COPLIEN FORM : ${vertclair}PERFECT${blanc}\n"
 					fi
