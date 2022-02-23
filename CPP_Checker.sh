@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/22 02:57:32 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/23 18:25:30 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -179,6 +179,7 @@ if [ -f "./ex00/easyfind.hpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-08/mine
 	fi
+	nocoplien=1
 	cpp=8
 fi
 # if cpp still -1, then do a make test and check if there is a convert executable
