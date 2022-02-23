@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/23 18:28:40 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/23 18:29:33 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -324,7 +324,7 @@ coplienform() {
 			class=$(echo $class | cut -c 3-)
 			output=$(cat $fichier | grep -w "class" | wc -l)
 			usingpost="using=[FILES_${fichier}][CPP_$cpp][EX_0$ex][OS_$os][COPLIENFORM] : "
-			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $output -ne 0 ]; then
+			if [ $fichier != "./easyfind.hpp" ] && [ $fichier != "./Data.hpp" ] && [ $output -ne 0 ] && [ $nocoplien -ne 1 ]; then
 				coplien=0
 				printf "\n\n${blanc}       ${souligne}Class ${vertclair}$class${neutre}${neutre} ($fichier)${blanc} :\n"
 				output=$(cat $fichier | grep "$class(void)" | grep -v "~" | wc -l)
