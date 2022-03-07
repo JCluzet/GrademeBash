@@ -212,6 +212,7 @@ if [ $cpp -eq -1 ]; then
 		sleep 2
 		git clone http://www.github.com/jcluzet/ft_container-tester.git container_tester
 		cd container_tester
+		git pull
 		bash launch.sh
 		cd ..
 		exit 1;
