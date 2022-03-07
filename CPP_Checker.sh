@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/23 18:31:04 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/03/07 14:54:04 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -201,6 +201,21 @@ if [ $cpp -eq -1 ]; then
 		cd ..
 	fi
 	make fclean
+fi
+if [ $cpp -eq -1 ]; then
+	path_stack=$(find . -name "stack.hpp" -o -name "Stack.hpp" | head -n 1)
+	if [ $path_stack == "" ]; then
+		printf "\n"
+	else
+		header
+		printf "Find $vertclair ft_containers$neutre project !\n\n${jaune}WARNING:${neutre} ft_containers tester is in beta.\n\n"
+		sleep 2
+		git clone http://www.github.com/jcluzet/ft_container-tester.git container_tester
+		cd container_tester
+		bash launch.sh
+		cd ..
+		exit 1;
+	fi
 fi
 if [ $cpp -eq -1 ]; then
 header
