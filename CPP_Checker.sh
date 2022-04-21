@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/04/08 18:09:27 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/04/21 15:10:19 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -208,7 +208,7 @@ if [ $cpp -eq -1 ]; then
 		printf "\n"
 	else
 		header
-		printf "Find $vertclair ft_containers$neutre project !\n\n${jaune}WARNING:${neutre} ft_containers tester is in beta.\n\n"
+		printf "Find $vertclair ft_containers$neutre project !\n\n\n"
 		git clone https://github.com/JCluzet/42_container_tester.git container_tester
 		cd container_tester
 		git pull
