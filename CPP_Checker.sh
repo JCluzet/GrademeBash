@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/04/21 15:10:19 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/10 14:53:09 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,7 +169,10 @@ if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ]; then
 	cpp=7
 fi
 #if there is a easyfind.hpp, it's CPP8
-if [ -f "./ex00/easyfind.hpp" ]; then
+path_s=$(find . -name "easyfind.hpp" -o -name "Easyfind.hpp" | head -n 1)
+if [ $path_s == "" ]; then
+printf "\n${orange} 📎 Not CPP08 > No Easyfind file found\n\n";
+else
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -184,7 +187,7 @@ if [ -f "./ex00/easyfind.hpp" ]; then
 fi
 # if cpp still -1, then do a make test and check if there is a convert executable
 if [ $cpp -eq -1 ]; then
-	printf "${vertclair}Checking if there is a convert executable\n"
+	printf "${vertclair}Checking if there is a convert executable for CPP06\n"
 	cd ex00
 	make
 	if [ -f "./convert" ]; then
