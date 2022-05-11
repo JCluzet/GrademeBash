@@ -156,16 +156,17 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         read -rsn1 -p " " contact
         if [ "$contact" == "y" ]
         then
-            # printf "Enter your email : "
-            # read " " email
-        printf "\n${vertclair}        ➤${neutre} We will try to contact you regarding your feedback. 🥳 \n\n"
-            curl -X POST -F $userpost -F 'using=42_FEEDBACK' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
-            curl -X POST -F $userpost -F 'feedback='"$feedback" -F 'email='"$email" https://user.grademe.fr/index.php > /dev/null 2>&1
+            printf "\n${vertclair}        ➤${neutre} We will try to contact you regarding your feedback. 🥳 \n\n"
+            userpost="user=FEEDGrade_$LOGNAME>contact?YES"
+            usingpost="using=Feedback:$feedback"
+
         else
-        printf "\n${rougefonce}        ➤${neutre} We will ${rougefonce}not${neutre} contact you about your feedback 😢 \n\n"
-            curl -X POST -F $userpost -F 'using=42_FEEDBACK' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
-            curl -X POST -F $userpost -F 'feedback='"$feedback" https://user.grademe.fr/index.php > /dev/null 2>&1
+            printf "\n${rougefonce}        ➤${neutre} We will ${rougefonce}not${neutre} contact you about your feedback 😢 \n\n"
+            userpost="user=FEEDGrade_$LOGNAME>contact?NO"
+            usingpost="using=Feedback:$feedback"
+
         fi
+        curl -X POST -F "$userpost" -F "$usingpost" -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
         printf "\n       ${vertclair}          📩 Feedback send !${neutre} redirection....\n\n"
     else  
         printf "${red}                              ❌ Empty feedback, return back...\n\n"
