@@ -6,6 +6,7 @@ vertclair='\033[1;32m'
 orange='\033[0;33m'
 blanc='\033[1;37m'
 neutre='\033[0;m'
+# rougeclair='\033[1;31m'
 # create user var container user= + $LOGNAME
 userpost="user=$LOGNAME" 
 date=$(date '+%F_%H:%M:%S')
@@ -27,23 +28,24 @@ fi
 #  bash -c "$(curl 42.cluzet.fr/check)"
 # exit 0
 
-printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
-/\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
-\ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
- \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
+# printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
+# /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
+# \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
+#  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
+#   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
 
 
-        printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
-        printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
-        printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04, 05\n\n";
-        printf "\n        ${orange}4  ➤ ${rougefonce} EXIT ${neutre} \n" 
-        # if user is in Desktop folder
+#         printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
+#         printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
+#         printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04, 05\n\n";
+#         printf "        ${orange}4  ➤ ${vertclair} Let a feedback ${neutre} report a problem or feedback\n\n";
+#         printf "\n        ${orange}5  ➤ ${rougefonce} EXIT ${neutre} \n" 
+#         # if user is in Desktop folder
 
-        printf "\n           ${blanc}Selection     ➤ "
-read -r -p " " choice
-printf "\n\n"
-while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$choice" != "4" ]
+#         printf "\n           ${blanc}Selection     ➤ "
+# read -r -p " " choice
+# printf "\n\n"
+while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$choice" != "4" ] && [ "$choice" != "5" ]
 do
 clear
 printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
@@ -53,12 +55,13 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
 
 
-        printf "        ${orange}1     ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
-        printf "        ${orange}2     ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
-        printf "        ${orange}3     ➤ ${vertclair} 42_EXAM simulator${neutre} Exam Rank 02, 03, 04 \n\n";
-        printf "\n        ${orange}4     ➤ ${rougefonce} EXIT ${neutre} \n" 
+        printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER ${neutre}         Correction for common core\n\n"
+        printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}            Create auto makefile \n\n"
+        printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator${neutre}   Exam Rank 02, 03, 04 \n\n";
+        printf "        ${orange}4  ➤ ${vertclair} Let a ${rougefonce}feedback    ${neutre}  Report a problem or feedback\n\n";
+        printf "\n        ${orange}5  ➤ ${rougefonce} EXIT ${neutre} \n" 
 
-        printf "\n          ${blanc}Select a number from 1 to 4     ➤ "
+        printf "\n          ${blanc}Select a number from 1 to 5     ➤ "
 read -rsn1 -p " " choice
 done
 if (( "$choice" == 1 ))
@@ -136,6 +139,46 @@ curl -X POST -F $userpost -F 'using=42_EXAM download' -F $time https://user.grad
     fi
 fi
 if (( "$choice" == 4))
+then
+clear
+printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
+/\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
+\ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
+ \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
+    printf "      Enter your feedback :${neutre} "
+    # get the line and put it in feedback var
+    read -p " " feedback
+    # if feedback is not empty
+    if (( "${#feedback}" > 0 ))
+    then
+        printf "\n${vertclair}     ➤${vertclair} $LOGNAME${blanc}, Would you like to be contacted regarding this feedback? (y/n)"
+        read -rsn1 -p " " contact
+        if [ "$contact" == "y" ]
+        then
+            # printf "Enter your email : "
+            # read " " email
+        printf "\n${vertclair}        ➤${neutre} We will try to contact you regarding your feedback. 🥳 \n\n"
+            curl -X POST -F $userpost -F 'using=42_FEEDBACK' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
+            curl -X POST -F $userpost -F 'feedback='"$feedback" -F 'email='"$email" https://user.grademe.fr/index.php > /dev/null 2>&1
+        else
+        printf "\n${rougefonce}        ➤${neutre} We will ${rougefonce}not${neutre} contact you about your feedback 😢 \n\n"
+            curl -X POST -F $userpost -F 'using=42_FEEDBACK' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
+            curl -X POST -F $userpost -F 'feedback='"$feedback" https://user.grademe.fr/index.php > /dev/null 2>&1
+        fi
+        printf "\n       ${vertclair}          📩 Feedback send !${neutre} redirection....\n\n"
+    else  
+        printf "${red}                              ❌ Empty feedback, return back...\n\n"
+    fi
+    printf "                "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.08
+	done
+        bash -c "$(curl 42.cluzet.fr)"
+fi
+if (( "$choice" == 5))
 then
     exit
 fi
