@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    CPP_Checker.sh                                     :+:      :+:    :+:    #
+#    cpp                                                :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: mprigent <mprigent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/10 14:53:09 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/19 19:27:38 by mprigent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,10 +169,8 @@ if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ]; then
 	cpp=7
 fi
 #if there is a easyfind.hpp, it's CPP8
-path_s=$(find . -name "easyfind.hpp" -o -name "Easyfind.hpp" | head -n 1)
-if [ $path_s == "" ]; then
-printf "\n${orange} 📎 Not CPP08 > No Easyfind file found\n\n";
-else
+
+if [ -f "./ex01/easyfind.hpp" ] || [ -f "./ex01/Easyfind.hpp" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -185,6 +183,21 @@ else
 	nocoplien=1
 	cpp=8
 fi
+path_s=$(find . -name "easyfind.hpp" -o -name "Easyfind.hpp" | head -n 1)
+if [ $cpp -eq -1 ] && [ $path_s == "" ]; then
+	if [ $os == "MAC" ]; then
+		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
+		sleep 1
+		open https://projects.intra.42.fr/cpp-module-08/mine
+	else
+		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
+		sleep 1
+		xdg-open https://projects.intra.42.fr/cpp-module-08/mine
+	fi
+	nocoplien=1
+	cpp=8
+fi
+
 # if cpp still -1, then do a make test and check if there is a convert executable
 if [ $cpp -eq -1 ]; then
 	printf "${vertclair}Checking if there is a convert executable for CPP06\n"
@@ -205,9 +218,9 @@ if [ $cpp -eq -1 ]; then
 	fi
 	make fclean
 fi
-if [ $cpp -eq -1 ]; then
+if [ $cpp -eq -1 ] && [ $cpp -eq -1 ]; then
 	path_stack=$(find . -name "stack.hpp" -o -name "Stack.hpp" | head -n 1)
-	if [ $path_stack == "" ]; then
+	if [ $path_stack == "" ] && ; then
 		printf "\n"
 	else
 		header
