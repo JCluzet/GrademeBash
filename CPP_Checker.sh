@@ -220,7 +220,7 @@ if [ $cpp -eq -1 ]; then
 fi
 if [ $cpp -eq -1 ] && [ $cpp -eq -1 ]; then
 	path_stack=$(find . -name "stack.hpp" -o -name "Stack.hpp" | head -n 1)
-	if [ $path_stack == "" ] && ; then
+	if [ $path_stack == "" ]; then
 		printf "\n"
 	else
 		header
