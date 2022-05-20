@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    cpp                                                :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mprigent <mprigent@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcluzet <mprigent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 00:44:50 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/19 19:27:38 by mprigent         ###   ########.fr        #
+#    Updated: 2022/05/19 19:27:38 by jcluzet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -184,7 +184,7 @@ if [ -f "./ex01/easyfind.hpp" ] || [ -f "./ex01/Easyfind.hpp" ]; then
 	cpp=8
 fi
 path_s=$(find . -name "easyfind.hpp" -o -name "Easyfind.hpp" | head -n 1)
-if [ $cpp -eq -1 ] && [ $path_s == "" ]; then
+if [ $cpp -eq -1 ] && [ "$path_s" != "" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -220,7 +220,7 @@ if [ $cpp -eq -1 ]; then
 fi
 if [ $cpp -eq -1 ] && [ $cpp -eq -1 ]; then
 	path_stack=$(find . -name "stack.hpp" -o -name "Stack.hpp" | head -n 1)
-	if [ $path_stack == "" ]; then
+	if [ "$path_stack" == "" ]; then
 		printf "\n"
 	else
 		header
