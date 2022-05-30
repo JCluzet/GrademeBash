@@ -27,7 +27,7 @@ Automatic testing for all 42, C and CPP projects. Makefile relink, Header wrong 
 ## This script automatically launches the test associated with the project. 
 ## Here are all the available tests:
 
-### 🔺 LIBFT, GET_NEXT_LINE, FT_PRINTF, SO_LONG, PUSH_SWAP, CUB3D, PHILOSOPHERS, FT_CONTAINERS
+### 🔺 LIBFT, GET_NEXT_LINE, FT_PRINTF, SO_LONG, PUSH_SWAP, CUB3D, PHILOSOPHERS, FT_CONTAINERS & ALL CPP MODULES
 
 ## CPP Projects :
 ### ✔️ Makefile Flags check
