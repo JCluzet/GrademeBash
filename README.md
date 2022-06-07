@@ -5,7 +5,7 @@ Automatic testing for all 42, C and CPP projects. Makefile relink, Header wrong 
 #### ---------
 
 ### 🥳 NEW ! You can run the script on MAC and LINUX WITHOUT installation or rights required!
-####         USE THIS COMMAND : `bash -c "$(curl grademe.fr)"` 
+####         USE THIS COMMAND : `bash -c "$(curl https://grademe.fr)"` 
 ####         Find this command on [GradeMe.fr](https://www.grademe.fr) !
 
 #### ---------
