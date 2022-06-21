@@ -156,7 +156,7 @@ if [ -f "./ex00/Bureaucrat.hpp" ] || [ -f "./ex00/bureaucrat.hpp" ]; then
 	cpp=5
 fi
 # if there is a ex00/whatever.hpp, it's CPP7
-if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ]; then
+if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ] || [ -f "./ex01/Iter.tpp" ] || [ -f "./ex01/iter.tpp" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP07 Project${blanc} in your browser\n\n"
 		sleep 1
