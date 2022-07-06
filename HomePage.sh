@@ -123,7 +123,7 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 then
 printf "\n\n"
 curl -X POST -F $userpost -F 'using=42_EXAM download' -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
-    git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make
+    git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make -s
     else
     printf "\n\n\n"
 	printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 4 SECONDS\n               "
