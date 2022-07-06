@@ -25,27 +25,7 @@ else
     exit 1
 fi
 
-#  bash -c "$(curl 42.cluzet.fr/check)"
-# exit 0
-
-# printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
-# /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
-# \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
-#  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-#   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
-
-
-#         printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER AUTO ${neutre} \n\n"
-#         printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}(create a auto makefile) \n\n"
-#         printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator ${neutre} Exam Rank 02, 03, 04, 05\n\n";
-#         printf "        ${orange}4  ➤ ${vertclair} Let a feedback ${neutre} report a problem or feedback\n\n";
-#         printf "\n        ${orange}5  ➤ ${rougefonce} EXIT ${neutre} \n" 
-#         # if user is in Desktop folder
-
-#         printf "\n           ${blanc}Selection     ➤ "
-# read -r -p " " choice
-# printf "\n\n"
-while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$choice" != "4" ] && [ "$choice" != "5" ]
+while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$choice" != "4" ] && [ "$choice" != "5" ] && [ "$choice" != "6" ]
 do
 clear
 printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
@@ -59,9 +39,10 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
         printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}            Create auto makefile \n\n"
         printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator${neutre}   Exam Rank 02, 03, 04 \n\n";
         printf "        ${orange}4  ➤ ${vertclair} Let a ${rougefonce}feedback    ${neutre}  Report a problem or feedback\n\n";
-        printf "\n        ${orange}5  ➤ ${rougefonce} EXIT ${neutre} \n" 
+        printf "        ${orange}5  ➤ ${vertclair} Open ${rougefonce}Github Repo  ${neutre}  Star the repo ❤️ or put an issue\n\n";
+        printf "\n        ${orange}6  ➤ ${rougefonce} EXIT ${neutre} \n" 
 
-        printf "\n          ${blanc}Select a number from 1 to 5     ➤ "
+        printf "\n          ${blanc}Select a number from 1 to 6     ➤ "
 read -rsn1 -p " " choice
 done
 if (( "$choice" == 1 ))
@@ -179,7 +160,32 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 	done
         bash -c "$(curl 42.cluzet.fr)"
 fi
+
+if [ "$(uname)" == "Darwin" ]; then
+	os="MAC"
+else
+	os="LINUX"
+fi
+
+
 if (( "$choice" == 5))
 then
-    exit
+    if [ "$os" == "MAC" ]; then
+        open "https://github.com/JCluzet/42_GradeMe"
+    else
+        xdg-open "https://github.com/JCluzet/42_GradeMe"
+    fi
+    printf "\n\n"
+    printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 4 SECONDS\n               "
+	for i in {1..32}
+	do
+		printf "|"
+		sleep 0.08
+	done
+        bash -c "$(curl 42.cluzet.fr)"
 fi
+if (( "$choice" == 6))
+then
+exit
+fi
+
