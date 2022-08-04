@@ -540,9 +540,10 @@ while [ -d "ex0$ex" ]; do
 			code ex0$ex
 		fi
 		ex1=$(($ex + 1))
+		# echo "HERE>$ex1"
 		if [ -d "ex0$ex1" ]; then
 			printf "\n ${blanc}   🧬 Touch a key to continue to ${vertclair}ex0$ex1${blanc}\n"
-			read -rsn1 "" value
+			read -rsn1 -p " " value
 		fi
 	fi
 	ex=$((ex + 1))
