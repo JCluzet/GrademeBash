@@ -558,7 +558,7 @@ fi
 
 if [ $cpp -ne -1 ]; then
 printf "\n\n        ${vertclair}ex0$ex${blanc} is the ${rougefonce}last ${blanc}exercice.\n        Tap to exit\n"
-read -rsn1 "" value
+read -rsn1 -p " " value
 else
 exit
 fi
