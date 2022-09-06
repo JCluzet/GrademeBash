@@ -13,6 +13,28 @@ date=$(date '+%F_%H:%M:%S')
 time="time=$date"
 
 
+if [ $LOGNAME = "jcluzet" ]
+then
+    echo -e "${vertclair}You're VIP <3${neutre}"
+fi
+if [ $LOGNAME = "jo" ]
+then
+    echo -e "${vertclair}You're VIP <3${neutre}"
+fi
+if [ $LOGNAME = "manonprigent" ]
+then
+    echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe until 2022-12-12 00:00:00${neutre}, MOUHAHAHAHAHA"
+    exit
+fi
+if [ $LOGNAME = "mprigent" ]
+then
+    echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe until 2022-12-12 00:00:00${neutre}, MOUHAHAHAHAHA"
+    exit
+fi
+
+
+
+
 clear
 
 output=$(echo -e "test")
