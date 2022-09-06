@@ -34,14 +34,14 @@ done
 
 
 
-if [ $vip -eq 1 ]
-then
-    echo -e "${vertclair}You're VIP <3${neutre}"
-fi
+# if [ $vip -eq 1 ]
+# then
+#     echo -e "${vertclair}You're VIP <3${neutre}"
+# fi
 if [ $ban -eq 1 ]
 then
     clear
-    echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe until 2022-12-12 00:00:00${neutre}, MOUHAHAHAHAHA"
+    echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe${neutre}"
     exit
 fi
 
@@ -67,8 +67,13 @@ printf "\n${vertclair} ______     ______     ______     _____     ______     __ 
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
-
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n"
+  
+if [ $vip -eq 1 ]; then
+    printf "${neutre}                            You're ${vertclair}VIP ${neutre}$LOGNAME ${neutre}\n\n"
+else
+  printf "     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
+fi
 
         printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER ${neutre}         Correction for common core\n\n"
         printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}            Create auto makefile \n\n"
