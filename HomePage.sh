@@ -11,23 +11,36 @@ neutre='\033[0;m'
 userpost="user=$LOGNAME" 
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"
+vip=0
+ban=0
 
 
-if [ $LOGNAME = "jcluzet" ]
+viplist=$(curl https://user.grademe.fr/vip_list)
+banlist=$(curl https://user.grademe.fr/ban_list)
+for line in $viplist
+do
+    # if LOGNAME = line
+    if [ "$line" == $LOGNAME ];then
+        vip=1
+    fi
+done
+for line in $banlist
+do
+    # if LOGNAME = line
+    if [ "$line" == $LOGNAME ];then
+        ban=1
+    fi
+done
+
+
+
+if [ $vip -eq 1 ]
 then
     echo -e "${vertclair}You're VIP <3${neutre}"
 fi
-if [ $LOGNAME = "jo" ]
+if [ $ban -eq 1 ]
 then
-    echo -e "${vertclair}You're VIP <3${neutre}"
-fi
-if [ $LOGNAME = "manonprigent" ]
-then
-    echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe until 2022-12-12 00:00:00${neutre}, MOUHAHAHAHAHA"
-    exit
-fi
-if [ $LOGNAME = "mprigent" ]
-then
+    clear
     echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe until 2022-12-12 00:00:00${neutre}, MOUHAHAHAHAHA"
     exit
 fi
