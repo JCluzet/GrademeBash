@@ -56,7 +56,7 @@ while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$
     if [ $vip -eq 1 ]; then
         printf "${neutre}                            You're ${vertclair}VIP ${neutre}$LOGNAME ${neutre}\n\n"
     else
-        printf "     ${blanc}Feel free to${rougefonce} fork ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
+        printf "     ${blanc}Feel free to${rougefonce} star ${vertclair}GradeMe${blanc} on${orange} Github ${blanc} : github.com/jcluzet/42_GradeMe\n\n\n"
     fi
 
     printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER ${neutre}         Correction for common core\n\n"
