@@ -61,7 +61,7 @@ while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$
 
     printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER ${neutre}         Correction for common core\n\n"
     printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}            Create auto makefile \n\n"
-    printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator${neutre}   Exam Rank 02, 03, 04 \n\n"
+    printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator${neutre}   Exam Rank 02, 03, 04, 05, 06 \n\n"
     printf "        ${orange}4  ➤ ${vertclair} Let a ${rougefonce}feedback    ${neutre}  Report a problem or feedback\n\n"
     printf "        ${orange}5  ➤ ${vertclair} Open ${rougefonce}Github Repo  ${neutre}  Star the repo ❤️  or put an issue\n\n"
     printf "\n        ${orange}6  ➤ ${rougefonce} EXIT ${neutre} \n"
@@ -132,7 +132,7 @@ if (("$choice" == 3)); then
             bash -c "$(curl 42.cluzet.fr)"
             exit 0
         else
-            git clone https://github.com/JCluzet/42_EXAM.git 42-EXAM && cd 42-EXAM && make
+            git clone https://github.com/JCluzet/42_EXAM.git 42-EXAM
             printf "\n\n${magenta}42-EXAM ${blanc}\n\nLaunch and check update... "
             cd 42-EXAM
             make
