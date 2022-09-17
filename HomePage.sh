@@ -115,11 +115,11 @@ if (("$choice" == 3)); then
         printf "${vertclair}\nDONE ✅\n"
         printf "${magenta}42-EXAM: ${blanc}Launch and check update... "
         cd 42-EXAM
-        make
+        make re
     elif [ -d 42-EXAM ]; then # if the user have the new version
         printf "\n${magenta}42-EXAMv2 ${blanc}\n\nLaunch and check update... "
         cd 42-EXAM
-        make
+        make re
     else
         printf "  ${blanc}You're going to download ${vertclair}42-EXAM ${blanc}from ${vertclair}JCluzet Github${blanc} in ${vertclair}${PWD}/42-EXAM/${blanc}\n\n    Click to continue or n to skip."
         read -rsn1 -p " " choice
