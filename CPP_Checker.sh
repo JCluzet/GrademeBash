@@ -78,7 +78,7 @@ else
 	os="LINUX"
 fi
 
-if [ -f "./ex00/megaphone.cpp" ]; then
+if [ -f "./ex00/megaphone.cpp" ] || [ -f "./ex00/src/megaphone.cpp" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP00 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -91,7 +91,7 @@ if [ -f "./ex00/megaphone.cpp" ]; then
 	cpp=0
 fi
 # if there is a ex00/Zombie.hpp or ex00/zombie.hpp, it's CPP1
-if [ -f "./ex00/Zombie.hpp" ] || [ -f "./ex00/zombie.hpp" ]; then
+if [ -f "./ex00/Zombie.hpp" ] || [ -f "./ex00/zombie.hpp" ] || [ -f "./ex00/include/Zombie.hpp" ] || [ -f "./ex00/include/Zombie.hpp" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP01 Project${blanc} in your browser\n\n"
 		sleep 1
