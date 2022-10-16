@@ -79,6 +79,9 @@ else
 fi
 
 if [ -f "./ex00/megaphone.cpp" ] || [ -f "./ex00/src/megaphone.cpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP00 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -88,10 +91,14 @@ if [ -f "./ex00/megaphone.cpp" ] || [ -f "./ex00/src/megaphone.cpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-00/mine
 	fi
+    fi
 	cpp=0
 fi
 # if there is a ex00/Zombie.hpp or ex00/zombie.hpp, it's CPP1
 if [ -f "./ex00/Zombie.hpp" ] || [ -f "./ex00/zombie.hpp" ] || [ -f "./ex00/include/Zombie.hpp" ] || [ -f "./ex00/include/Zombie.hpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP01 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -101,10 +108,14 @@ if [ -f "./ex00/Zombie.hpp" ] || [ -f "./ex00/zombie.hpp" ] || [ -f "./ex00/incl
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-01/mine
 	fi
+    fi
 	cpp=1
 fi
 # if there is a ex00/Fixed.hpp or ex00/fixed.hpp, it's CPP2
 if [ -f "./ex00/Fixed.hpp" ] || [ -f "./ex00/fixed.hpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP02 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -114,10 +125,14 @@ if [ -f "./ex00/Fixed.hpp" ] || [ -f "./ex00/fixed.hpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-02/mine
 	fi
+    fi
 	cpp=2
 fi
 # if there is a ex00/ClapTrap.hpp or ex00/clapTrap.hpp, it's CPP3
 if [ -f "./ex00/ClapTrap.hpp" ] || [ -f "./ex00/clapTrap.hpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP03 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -127,10 +142,14 @@ if [ -f "./ex00/ClapTrap.hpp" ] || [ -f "./ex00/clapTrap.hpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-03/mine
 	fi
+    fi
 	cpp=3
 fi
 # i there is a ex00/Dog.hpp or ex00/dog.hpp, it's CPP4
 if [ -f "./ex00/Dog.hpp" ] || [ -f "./ex00/dog.hpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP04 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -140,10 +159,14 @@ if [ -f "./ex00/Dog.hpp" ] || [ -f "./ex00/dog.hpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-04/mine
 	fi
+    fi
 	cpp=4
 fi
 # if there is a ex00/Bureaucrat.hpp or ex00/bureaucrat.hpp, it's CPP5
 if [ -f "./ex00/Bureaucrat.hpp" ] || [ -f "./ex00/bureaucrat.hpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP05 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -153,10 +176,14 @@ if [ -f "./ex00/Bureaucrat.hpp" ] || [ -f "./ex00/bureaucrat.hpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-05/mine
 	fi
+    fi
 	cpp=5
 fi
 # if there is a ex00/whatever.hpp, it's CPP7
 if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ] || [ -f "./ex01/Iter.tpp" ] || [ -f "./ex01/iter.tpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP07 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -166,11 +193,15 @@ if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ] || [ -f "./ex01/Iter.tpp
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-07/mine
 	fi
+    fi
 	cpp=7
 fi
 #if there is a easyfind.hpp, it's CPP8
 
 if [ -f "./ex01/easyfind.hpp" ] || [ -f "./ex01/Easyfind.hpp" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -180,11 +211,15 @@ if [ -f "./ex01/easyfind.hpp" ] || [ -f "./ex01/Easyfind.hpp" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-08/mine
 	fi
+    fi
 	nocoplien=1
 	cpp=8
 fi
 path_s=$(find . -name "easyfind.hpp" -o -name "Easyfind.hpp" | head -n 1)
 if [ $cpp -eq -1 ] && [ "$path_s" != "" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 	if [ $os == "MAC" ]; then
 		printf "\n${orange} 📎 Opening ${vertclair}42 CPP08 Project${blanc} in your browser\n\n"
 		sleep 1
@@ -194,6 +229,7 @@ if [ $cpp -eq -1 ] && [ "$path_s" != "" ]; then
 		sleep 1
 		xdg-open https://projects.intra.42.fr/cpp-module-08/mine
 	fi
+    fi
 	nocoplien=1
 	cpp=8
 fi
@@ -204,6 +240,9 @@ if [ $cpp -eq -1 ]; then
 	cd ex00
 	make
 	if [ -f "./convert" ]; then
+        echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
 		if [ $os == "MAC" ]; then
 			printf "\n${orange} 📎 Opening ${vertclair}42 CPP06 Project${blanc} in your browser\n\n"
 			sleep 1
@@ -213,6 +252,7 @@ if [ $cpp -eq -1 ]; then
 			sleep 1
 			xdg-open https://projects.intra.42.fr/cpp-module-06/mine
 		fi
+        fi
 		cpp=6
 		cd ..
 	fi
