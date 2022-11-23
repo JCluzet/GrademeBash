@@ -180,7 +180,7 @@ fi
 
 # fi
 
-if (("$choice" == 4)); then
+if (("$choice" == "4")); then
     clear
     printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
@@ -224,7 +224,7 @@ else
     os="LINUX"
 fi
 
-if (("$choice" == 5)); then
+if (("$choice" == "5")); then
     if [ "$os" == "MAC" ]; then
         open "https://github.com/JCluzet/42_GradeMe"
     else
@@ -238,6 +238,6 @@ if (("$choice" == 5)); then
     done
     bash -c "$(curl 42.cluzet.fr)"
 fi
-if (("$choice" == 6)); then
+if (("$choice" == "6")); then
     exit
 fi
