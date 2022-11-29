@@ -13,8 +13,8 @@ time="time=$date"
 vip=0
 ban=0
 
-viplist=$(curl https://user.grademe.fr/vip_list)
-banlist=$(curl https://user.grademe.fr/ban_list)
+viplist=$(curl https://user.grademe.fr/vip_list 2>&1 )
+banlist=$(curl https://user.grademe.fr/ban_list 2>&1 )
 for line in $viplist; do
     # if LOGNAME = line
     if [ "$line" == $LOGNAME ]; then
@@ -33,6 +33,8 @@ if [ $ban -eq 1 ]; then
     echo -e "${blanc}Due to multiple violations of our Community Guidelines,${rougefonce} you're temporarily blocked from using Grademe${neutre}"
     exit
 fi
+
+laststar=$(curl https://user.grademe.fr/star.txt | tail -n 1 2>&1)
 
 clear
 
@@ -61,7 +63,8 @@ while [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != 3 ] && [ "$
 
     printf "        ${orange}1  ➤ ${vertclair} 42_CHECKER ${neutre}         Correction for common core\n\n"
     printf "        ${orange}2  ➤ ${vertclair} 42_Make ${neutre}            Create auto makefile \n\n"
-    printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator${neutre}   Exam Rank 02, 03, 04, 05, 06 \n\n"
+    printf "        ${orange}3  ➤ ${vertclair} 42_EXAM simulator${neutre}   All Studs & Piscine exams \n"
+    printf "               ⮑  Last Star on Github: ${vertclair}$laststar ${rougefonce}❤️\n\n"
     printf "        ${orange}4  ➤ ${vertclair} Let a ${rougefonce}feedback    ${neutre}  Report a problem or feedback\n\n"
     printf "        ${orange}5  ➤ ${vertclair} Open ${rougefonce}Github Repo  ${neutre}  Star the repo ❤️  or put an issue\n\n"
     printf "\n        ${orange}6  ➤ ${rougefonce} EXIT ${neutre} \n"
