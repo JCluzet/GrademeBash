@@ -1,5 +1,28 @@
 #!/bin/bash
 
+spin[0]="⠁"
+spin[1]="⠃"
+spin[2]="⠇"
+spin[3]="⠧"
+spin[4]="⠷"
+spin[5]="⠿"
+spin[6]="⠷"
+spin[7]="⠧"
+spin[8]="⠇"
+
+# rm -rf 42-EXAM
+spin[9]="⠃"
+
+MANGENTA="\033[35m"
+BOLD="\033[1m"
+CLEAR_LINE="\033[2K"
+LINE_UP="\033[1A"
+RED="\033[31m"
+WHITE="\033[37m"
+GRAY="\033[90m"
+BLUE="\033[34m"
+GREEN="\033[32m"
+RESET="\033[0m"
 rougefonce='\033[0;31m'
 vertfonce='\033[0;32m'
 vertclair='\033[1;32m'
@@ -13,8 +36,8 @@ time="time=$date"
 vip=0
 ban=0
 
-viplist=$(curl https://user.grademe.fr/vip_list 2>&1 )
-banlist=$(curl https://user.grademe.fr/ban_list 2>&1 )
+viplist=$(curl -s https://user.grademe.fr/vip_list 2>&1 )
+banlist=$(curl -s https://user.grademe.fr/ban_list 2>&1 )
 for line in $viplist; do
     # if LOGNAME = line
     if [ "$line" == $LOGNAME ]; then
@@ -34,7 +57,7 @@ if [ $ban -eq 1 ]; then
     exit
 fi
 
-laststar=$(curl https://user.grademe.fr/star.txt | tail -n 1 2>&1)
+laststar=$(curl -s https://user.grademe.fr/star.txt | tail -n 1 2>&1)
 
 clear
 
@@ -43,7 +66,7 @@ if [[ $output == "test" ]]; then
     clear
 else
     clear
-    printf "${rougefonce}ERROR :${neutre} Please launch this script with bash. ${vertclair} \n\nTry : ${neutre}bash -c \$(\"curl -L grademe.fr\")\n\n"
+    printf "${rougefonce}ERROR :${neutre} Please launch this script with bash. ${vertclair} \n\nTry : ${neutre}bash -c \$(\"curl https://grademe.fr\")\n\n"
     exit 1
 fi
 
@@ -80,11 +103,11 @@ if (("$choice" == 1)); then
             printf "|"
             sleep 0.08
         done
-        bash -c "$(curl 42.cluzet.fr)"
+        bash -c "$(curl -s 42.cluzet.fr)"
         exit 0
     else
         curl -X POST -F $userpost -F 'using=42_CHECKER' -F $time https://user.grademe.fr/index.php >/dev/null 2>&1 # send data containing user and what he use to server
-        bash -c "$(curl 42.cluzet.fr/check)"
+        bash -c "$(curl -s 42.cluzet.fr/check)"
     fi
 fi
 if (("$choice" == 2)); then
@@ -95,11 +118,15 @@ if (("$choice" == 2)); then
             printf "|"
             sleep 0.08
         done
-        bash -c "$(curl 42.cluzet.fr)"
+        bash -c "$(curl -s 42.cluzet.fr)"
         exit 0
     else
+        printf "\n\n${rougefonce}Warning!${blanc} 42_MAKE must be used in a repo folder.\n"
+        printf "Please confirm $vertclair$PWD$blanc is your repo folder where you want to create a Makefile.\n"
+        printf "\n${blanc}Press any key to continue or CTRL+C to cancel."
+        read -rsn1 -p " " choice
         curl -X POST -F $userpost -F 'using=42_MAKE' -F $time https://user.grademe.fr/index.php >/dev/null 2>&1
-        bash -c "$(curl 42.cluzet.fr/make)"
+        bash -c "$(curl -s 42.cluzet.fr/make)"
     fi
 fi
 if (("$choice" == 3)); then
@@ -111,36 +138,50 @@ if (("$choice" == 3)); then
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n\n"
-    if [ -d 42_EXAM ]; then # if the user have the older version
-        printf "${magenta}42_EXAM: ${blanc}change v1 to v2... \n\n"
-        rm -rf 42_EXAM
-        git clone https://github.com/JCluzet/42_EXAM.git 42-EXAM
-        printf "${vertclair}\nDONE ✅\n"
-        printf "${magenta}42-EXAM: ${blanc}Launch and check update... "
-        cd 42-EXAM
-        make re
-    elif [ -d 42-EXAM ]; then # if the user have the new version
-        printf "\n${magenta}42-EXAMv2 ${blanc}\n\nLaunch and check update... "
-        cd 42-EXAM
-        make re
+# if folder 42_EXAM or 42-EXAM exist
+if [ -d 42_EXAM ] || [ -d 42-EXAM ]; then
+    printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
+    echo -ne "✔$RESET 42_EXAM$RESET is already install$WHITE$BOLD\n"
+    if [ -d 42_EXAM ]; then
+        cd 42_EXAM
     else
-        printf "  ${blanc}You're going to download ${vertclair}42-EXAM ${blanc}from ${vertclair}JCluzet Github${blanc} in ${vertclair}${PWD}/42-EXAM/${blanc}\n\n    Click to continue or n to skip."
-        read -rsn1 -p " " choice
-        if [ "$choice" == "n" ]; then
-            printf "\n\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 4 SECONDS\n               "
-            for i in {1..32}; do
-                printf "|"
-                sleep 0.08
-            done
-            bash -c "$(curl 42.cluzet.fr)"
-            exit 0
-        else
-            git clone https://github.com/JCluzet/42_EXAM.git 42-EXAM
-            printf "\n\n${magenta}42-EXAM ${blanc}\n\nLaunch and check update... "
-            cd 42-EXAM
-            make
-        fi
+        cd 42-EXAM
     fi
+    make grade
+    exit 0
+else
+
+    echo -ne "$WHITE$BOLD"
+    echo -ne "You're about to install$MANGENTA$BOLD 42-EXAM$WHITE$BOLD from Github\n\n"
+    read -p "Type 'y' to continue " -n 1 -r
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo -ne "$CLEAR_LINE\n"
+        printf "$LINE_UP$CLEAR_LINE$RED"
+        echo -ne "** Abort **\n$RESET"
+        echo -ne "Returning to main menu\n\n"
+        bash -c "$(curl -s https://grademe.fr)" 2> /dev/null 1> /dev/null 
+    fi
+    echo -ne "$CLEAR_LINE\n$WHITE$BOLD"
+    
+    git clone https://github.com/JCluzet/42_EXAM 42-EXAM > /dev/null 2>&1 &
+    PID=$!
+
+    #while there is no 42-EXAM/Makefile file, do the loop
+    while [ ! -f 42-EXAM/Makefile ]; do
+        for i in "${spin[@]}"; do
+            echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Installing 42-EXAM folder\n"
+            for i in {1..32}; do
+                printf "\b"
+            done
+            sleep 0.1
+        done
+    done
+    printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
+    echo -ne "✔$RESET Installing 42-EXAM folder$WHITE$BOLD\n\n"
+    cd 42-EXAM
+    make gradejustinstall
+fi
+
 fi
 # else
 
@@ -218,7 +259,7 @@ if (("$choice" == "4")); then
         printf "|"
         sleep 0.08
     done
-    bash -c "$(curl 42.cluzet.fr)"
+    bash -c "$(curl -s 42.cluzet.fr)"
 fi
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -239,8 +280,9 @@ if (("$choice" == "5")); then
         printf "|"
         sleep 0.08
     done
-    bash -c "$(curl 42.cluzet.fr)"
+    bash -c "$(curl -s 42.cluzet.fr)"
 fi
 if (("$choice" == "6")); then
     exit
 fi
+
