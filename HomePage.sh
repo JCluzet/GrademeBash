@@ -159,7 +159,7 @@ else
         printf "$LINE_UP$CLEAR_LINE$RED"
         echo -ne "** Abort **\n$RESET"
         echo -ne "Returning to main menu\n\n"
-        bash -c "$(curl -s https://grademe.fr)" 2> /dev/null 1> /dev/null 
+        bash -c "$(curl -s https://grademe.fr)"  
     fi
     echo -ne "$CLEAR_LINE\n$WHITE$BOLD"
     
