@@ -179,6 +179,25 @@ if [ -f "./ex00/Bureaucrat.hpp" ] || [ -f "./ex00/bureaucrat.hpp" ]; then
     fi
 	cpp=5
 fi
+#if there is a ex00/BitcoinExchange or ex00/BitcoinExchange.hpp, it's CPP9
+if [ -f "./ex00/BitcoinExchange.hpp" ] || [ -f "./ex00/BitcoinExchange" ]; then
+    echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
+    if [ $os == "MAC" ]; then
+        printf "\n${orange} 📎 Opening ${vertclair}42 CPP09 Project${blanc} in your browser\n\n"
+        sleep 1
+        open https://projects.intra.42.fr/cpp-module-09/mine
+    else
+        printf "\n${orange} 📎 Opening ${vertclair}42 CPP09 Project${blanc} in your browser\n\n"
+        sleep 1
+        xdg-open https://projects.intra.42.fr/cpp-module-09/mine
+    fi
+    fi
+    cpp=9
+fi
+
+
 # if there is a ex00/whatever.hpp, it's CPP7
 if [ -f "./ex01/iter.hpp" ] || [ -f "./ex01/Iter.hpp" ] || [ -f "./ex01/Iter.tpp" ] || [ -f "./ex01/iter.tpp" ]; then
     echo "Do you want to open correction page? (y to open)"
@@ -212,7 +231,7 @@ if [ -f "./ex01/easyfind.hpp" ] || [ -f "./ex01/Easyfind.hpp" ]; then
 		xdg-open https://projects.intra.42.fr/cpp-module-08/mine
 	fi
     fi
-	nocoplien=1
+	# nocoplien=1
 	cpp=8
 fi
 path_s=$(find . -name "easyfind.hpp" -o -name "Easyfind.hpp" | head -n 1)
@@ -230,7 +249,7 @@ if [ $cpp -eq -1 ] && [ "$path_s" != "" ]; then
 		xdg-open https://projects.intra.42.fr/cpp-module-08/mine
 	fi
     fi
-	nocoplien=1
+	# nocoplien=1
 	cpp=8
 fi
 
