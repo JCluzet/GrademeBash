@@ -55,6 +55,10 @@ header() {
   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n"
 
 	printf "\n"
+    if [ $cpp -eq -1 ]; then
+        printf "      Student : ${blanc}${version}              ${vertclair}CPP?? ${blanc}           🔧 ${vertclair}CPP${blanc} Correction on ${orange}${os} ${cluster}${neutre}\n\n"
+        return 0
+    fi
 
 	if [ $ignorefiles = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ] && [ $ignorefilesdeux = 'vdin3irn3dubhwbuy3bru2ruy23b32uyrv23bur32' ]; then
 		printf "      Student : ${blanc}${version}      ${vertclair}CPP0${cpp} ${blanc}> ${vertclair}${thatscpp} ${blanc}Files${neutre} 🔦      🔧 ${vertclair}CPP${blanc} Correction on ${orange}${os} ${cluster}${neutre}\n"
