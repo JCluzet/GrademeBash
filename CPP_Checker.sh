@@ -281,6 +281,32 @@ if [ $cpp -eq -1 ]; then
 	fi
 	make fclean
 fi
+# if cpp still -1, then do a make test and check if there is a btc executable for CPP9
+
+if [ $cpp -eq -1 ]; then
+    printf "${vertclair}Checking if there is a btc executable for CPP09\n"
+    cd ex00
+    make
+    if [ -f "./btc" ]; then
+        echo "Do you want to open correction page? (y to open)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
+        if [ $os == "MAC" ]; then
+            printf "\n${orange} 📎 Opening ${vertclair}42 CPP09 Project${blanc} in your browser\n\n"
+            sleep 1
+            open https://projects.intra.42.fr/cpp-module-09/mine
+        else
+            printf "\n${orange} 📎 Opening ${vertclair}42 CPP09 Project${blanc} in your browser\n\n"
+            sleep 1
+            xdg-open https://projects.intra.42.fr/cpp-module-09/mine
+        fi
+        fi
+        cpp=9
+        cd ..
+    fi
+    make fclean
+fi 
+
 if [ $cpp -eq -1 ] && [ $cpp -eq -1 ]; then
 	path_stack=$(find . -name "stack.hpp" -o -name "Stack.hpp" | head -n 1)
 	if [ "$path_stack" == "" ]; then
