@@ -131,98 +131,87 @@ if (("$choice" == 2)); then
 fi
 if (("$choice" == 3)); then
 
-    # if [ $vip -eq 1 ]; then
+    # Function to search for 42_EXAM directory
+    search_42exam() {
+        echo -ne "\n${vertclair}     ➤ ${blanc}Searching for 42_EXAM directory...\n"
+        # Search in home directory for 42_EXAM or 42-EXAM
+        found_dir=$(find ~ -type d \( -name "42_EXAM" -o -name "42-EXAM" \) -not -path "*/\.*" 2>/dev/null | head -n 1)
+        
+        if [ -n "$found_dir" ]; then
+            echo -ne "\n${vertclair}     ✔ ${blanc}Found 42_EXAM at: ${vertclair}$found_dir${blanc}\n"
+            printf "\n${vertclair}     ➤ ${blanc}Would you like to use this directory? ${orange}(y/n)${blanc} "
+            read -rsn1 -p " " reply
+            echo
+            if [ "$reply" == "y" ]; then
+                cd "$found_dir"
+                make grade
+                exit 0
+            fi
+        else
+            echo -ne "\n${rougefonce}     ✗ ${blanc}No 42_EXAM directory found on your computer${neutre}\n"
+            sleep 2
+        fi
+    }
+
     clear
     printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______    
 /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\   
 \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\   
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\ 
-  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n\n"
-# if folder 42_EXAM or 42-EXAM exist
-if [ -d 42_EXAM ] || [ -d 42-EXAM ]; then
-    printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
-    echo -ne "✔$RESET 42_EXAM$RESET is already install$WHITE$BOLD\n"
-    if [ -d 42_EXAM ]; then
-        cd 42_EXAM
+  \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n"
+
+    if [ -d 42_EXAM ] || [ -d 42-EXAM ]; then
+        printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
+        echo -ne "✔$RESET 42_EXAM$RESET is already install$WHITE$BOLD\n"
+        if [ -d 42_EXAM ]; then
+            cd 42_EXAM
+        else
+            cd 42-EXAM
+        fi
+        make grade
+        exit 0
     else
-        cd 42-EXAM
+        printf "\n${rougefonce}     ! ${blanc}Since 09 february 2025, ${vertclair}42_EXAM${blanc} is no longer available for download.\n\n"
+        
+        printf "        ${orange}1  ➤ ${vertclair}Search for 42_EXAM${blanc} on your computer\n\n"
+        printf "        ${orange}2  ➤ ${vertclair}Visit Grademe.fr${blanc} for more information\n\n"
+        printf "        ${orange}0  ➤ ${rougefonce}Return to main menu${neutre}\n\n"
+        
+        printf "\n          ${blanc}Select a number from 0 to 2     ➤ "
+        read -rsn1 -p " " choice
+        echo
+        
+        case $choice in
+            1)
+                search_42exam
+                printf "\n${blanc}     Press any key to return to main menu"
+                read -rsn1
+                bash -c "$(curl -s https://grademe.fr)"
+                exit 0
+                ;;
+            2)
+                echo -ne "\n${vertclair}     ➤ ${blanc}Opening Grademe.fr in your browser...${neutre}\n"
+                open "https://grademe.fr"
+                sleep 2
+                bash -c "$(curl -s https://grademe.fr)"
+                exit 0
+                ;;
+            0)
+                echo -ne "\n${vertclair}     ➤ ${blanc}Returning to main menu...${neutre}\n"
+                sleep 1
+                bash -c "$(curl -s https://grademe.fr)"
+                exit 0
+                ;;
+            *)
+                echo -ne "\n${rougefonce}     ✗ ${blanc}Invalid choice. Returning to main menu...${neutre}\n"
+                sleep 2
+                bash -c "$(curl -s https://grademe.fr)"
+                exit 0
+                ;;
+        esac
     fi
-    make grade
-    exit 0
-else
-
-    echo -ne "$WHITE$BOLD"
-    echo -ne "You're about to install$MANGENTA$BOLD 42-EXAM$WHITE$BOLD from Github\n\n"
-    read -p "Type 'y' to continue " -n 1 -r
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    echo -ne "$CLEAR_LINE\n"
-        printf "$LINE_UP$CLEAR_LINE$RED"
-        echo -ne "** Abort **\n$RESET"
-        echo -ne "Returning to main menu\n\n"
-        bash -c "$(curl -s https://grademe.fr)"  
-    fi
-    echo -ne "$CLEAR_LINE\n$WHITE$BOLD"
-    
-    git clone https://github.com/JCluzet/42_EXAM 42-EXAM > /dev/null 2>&1 &
-    PID=$!
-
-    #while there is no 42-EXAM/Makefile file, do the loop
-    while [ ! -f 42-EXAM/Makefile ]; do
-        for i in "${spin[@]}"; do
-            echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Installing 42-EXAM folder\n"
-            for i in {1..32}; do
-                printf "\b"
-            done
-            sleep 0.1
-        done
-    done
-    printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
-    echo -ne "✔$RESET Installing 42-EXAM folder$WHITE$BOLD\n\n"
-    cd 42-EXAM
-    make gradejustinstall
-fi
 
 fi
-# else
-
-#         ## true facon
-
-#         clear
-#         printf "\n${vertclair} ______     ______     ______     _____     ______     __    __     ______
-# /\  ___\   /\  == \   /\  __ \   /\  __-.  /\  ___\   /\ \"-./  \   /\  ___\
-# \ \ \__ \  \ \  __<   \ \  __ \  \ \ \/\ \ \ \  __\   \ \ \-./\ \  \ \  __\
-#  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_____\  \ \_\ \ \_\  \ \_____\
-#   \/_____/   \/_/ /_/   \/_/\/_/   \/____/   \/_____/   \/_/  \/_/   \/_____/\n\n"
-#         # if folder 42_EXAM exist
-#         if [ -d 42_EXAM ]; then
-#             printf "42_EXAM ${blanc}already download\nLaunch and check update... "
-#             cd 42_EXAM
-#             sleep 1
-#             curl -X POST -F $userpost -F 'using=42_EXAM alreadydown' -F $time https://user.grademe.fr/index.php >/dev/null 2>&1
-#             make
-#         else
-#             printf "  ${blanc}You're going to download ${vertclair}42_EXAM ${blanc}from ${vertclair}JCluzet Github${blanc} in ${vertclair}${PWD}/42_EXAM/${blanc}\n\n    Click to continue or n to skip."
-#             read -rsn1 -p " " value
-#             if [ "$value" != "n" ]; then
-#                 printf "\n\n"
-#                 curl -X POST -F $userpost -F 'using=42_EXAM download' -F $time https://user.grademe.fr/index.php >/dev/null 2>&1
-#                 git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make -s
-#             else
-#                 printf "\n\n\n"
-#                 printf "\n               ${blanc}REDIRECTION TO ${vertclair}MENU${blanc} IN 4 SECONDS\n               "
-#                 for i in {1..32}; do
-#                     printf "|"
-#                     sleep 0.08
-#                 done
-#                 bash -c "$(curl 42.cluzet.fr)"
-#                 exit 0
-#             fi
-#         fi
-#     fi
-
-## true one
-
-# fi
 
 if (("$choice" == "4")); then
     clear
@@ -236,15 +225,16 @@ if (("$choice" == "4")); then
     read -p " " feedback
     # if feedback is not empty
     if (("${#feedback}" > 0)); then
-        printf "\n${vertclair}     ➤${vertclair} $LOGNAME${blanc}, Would you like to be contacted regarding this feedback? (y/n)"
+        printf "\n${vertclair}     ➤ ${blanc}Would you like to be contacted regarding this feedback? ${orange}(y/n)${blanc} "
         read -rsn1 -p " " contact
+        echo
         if [ "$contact" == "y" ]; then
-            printf "\n${vertclair}        ➤${neutre} We will try to contact you regarding your feedback. 🥳 \n\n"
+            printf "\n${vertclair}        ➤ ${blanc}We will try to contact you regarding your feedback. 🥳 \n\n"
             userpost="user=FEEDGrade_$LOGNAME>contact?YES"
             usingpost="using=Feedback:$feedback"
 
         else
-            printf "\n${rougefonce}        ➤${neutre} We will ${rougefonce}not${neutre} contact you about your feedback 😢 \n\n"
+            printf "\n${rougefonce}        ➤ ${blanc}We will ${rougefonce}not${blanc} contact you about your feedback 😢 \n\n"
             userpost="user=FEEDGrade_$LOGNAME>contact?NO"
             usingpost="using=Feedback:$feedback"
 
@@ -285,4 +275,3 @@ fi
 if (("$choice" == "6")); then
     exit
 fi
-
